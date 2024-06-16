@@ -2,15 +2,15 @@ class ApiConstants {
   ApiConstants._();
 
   // Base Url
-  static const devBaseUrl = 'https://mysterybox-swd-be.onrender.com/';
+  static const devBaseUrl = 'https://mysterybox-swd-be.onrender.com';
   static const stgBaseUrl = 'https://api.github.com';
   static const prodBaseUrl = 'https://api.github.com';
 
   // User
-  static const userLogin = 'api/v1/login';
+  static const userLogin = '/api/v1/login';
   static const userLogout = '/login/logout';
   static const userMe = '/login/me';
-  static const userRegister = 'api/v1/register';
+  static const userRegister = '/api/v1/register';
 
   // Todo
   static const task = '/task';

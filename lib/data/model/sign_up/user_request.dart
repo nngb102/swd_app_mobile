@@ -1,21 +1,46 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+/// like user model but without id
 
-part 'user_request.freezed.dart';
+import 'package:json_annotation/json_annotation.dart';
 part 'user_request.g.dart';
 
-@freezed
-class UserRequest with _$UserRequest {
-  factory UserRequest({
-    @JsonKey(name: 'username') required String username,
-    @JsonKey(name: 'password') required String password,
-    @JsonKey(name: 'fullName') required String fullName,
-    @JsonKey(name: 'email') required String email,
-    @JsonKey(name: 'phone') required String phone,
-    @JsonKey(name: 'address') required String address,
-    @JsonKey(name: 'role') required String role,
-    @JsonKey(name: 'status') required bool status,
-  }) = _UserRequest;
+@JsonSerializable()
+class UserRequest {
+  UserRequest({
+    required this.username,
+    required this.password,
+    required this.fullName,
+    required this.email,
+    required this.phone,
+    required this.address,
+    required this.role,
+    required this.status,
+  });
 
   factory UserRequest.fromJson(Map<String, dynamic> json) =>
       _$UserRequestFromJson(json);
+  Map<String, dynamic> toJson() => _$UserRequestToJson(this);
+
+  @JsonKey(name: 'username')
+  final String username;
+
+  @JsonKey(name: 'password')
+  final String password;
+
+  @JsonKey(name: 'fullName')
+  final String fullName;
+
+  @JsonKey(name: 'email')
+  final String email;
+
+  @JsonKey(name: 'phone')
+  final String phone;
+
+  @JsonKey(name: 'address')
+  final String address;
+
+  @JsonKey(name: 'role')
+  final String role;
+
+  @JsonKey(name: 'status')
+  final bool status;
 }

@@ -15,10 +15,10 @@ class HomePresenter extends Cubit<HomeState> {
           state ?? HomeState.initial(),
         );
   ApiClient apiClient = ApiClient(Dio());
-  
+
   Future<void> getPackage(
       Function(CustomException error)? onErrorCallBack) async {
-    await Result.guardFuture(() async => apiClient.getPackage()).then(
+    await Result.guardFuture(() async => apiClient.getPackage('', 1)).then(
       (value) => value.when(
         success: (data) {
           final packages = data.packages.reversed.toList();

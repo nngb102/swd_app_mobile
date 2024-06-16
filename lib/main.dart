@@ -39,12 +39,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: EasyLoading.init(),
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      // theme: getAppTheme(Brightness.light),
-      // darkTheme: getAppTheme(Brightness.dark),
-      home: const SignIn(),
-    );
+        builder: EasyLoading.init(),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        // theme: getAppTheme(Brightness.light),
+        // darkTheme: getAppTheme(Brightness.dark),
+        home: SignIn());
   }
 }

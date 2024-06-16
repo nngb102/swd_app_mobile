@@ -43,8 +43,6 @@ abstract class $SignUpStateCopyWith<$Res> {
       String phone,
       String address,
       UserRequest userRequest});
-
-  $UserRequestCopyWith<$Res> get userRequest;
 }
 
 /// @nodoc
@@ -99,14 +97,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
               as UserRequest,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserRequestCopyWith<$Res> get userRequest {
-    return $UserRequestCopyWith<$Res>(_value.userRequest, (value) {
-      return _then(_value.copyWith(userRequest: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -125,9 +115,6 @@ abstract class _$$SignInStateImplCopyWith<$Res>
       String phone,
       String address,
       UserRequest userRequest});
-
-  @override
-  $UserRequestCopyWith<$Res> get userRequest;
 }
 
 /// @nodoc

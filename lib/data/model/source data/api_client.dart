@@ -17,7 +17,10 @@ abstract class ApiClient {
   ) = _ApiClient;
 
   @GET(ApiConstants.homeGetPackage)
-  Future<PackageResponse> getPackage();
+  Future<PackageResponse> getPackage(
+    @Query('search') String search,
+    @Query('status') int status,
+  );
 
   @GET(ApiConstants.getThemes)
   Future<ThemeResponse> getThemes();

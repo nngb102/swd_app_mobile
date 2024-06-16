@@ -6,8 +6,7 @@ part of 'user_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserRequestImpl _$$UserRequestImplFromJson(Map<String, dynamic> json) =>
-    _$UserRequestImpl(
+UserRequest _$UserRequestFromJson(Map<String, dynamic> json) => UserRequest(
       username: json['username'] as String,
       password: json['password'] as String,
       fullName: json['fullName'] as String,
@@ -18,7 +17,7 @@ _$UserRequestImpl _$$UserRequestImplFromJson(Map<String, dynamic> json) =>
       status: json['status'] as bool,
     );
 
-Map<String, dynamic> _$$UserRequestImplToJson(_$UserRequestImpl instance) =>
+Map<String, dynamic> _$UserRequestToJson(UserRequest instance) =>
     <String, dynamic>{
       'username': instance.username,
       'password': instance.password,

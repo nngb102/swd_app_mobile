@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../injection/injector.dart';
@@ -141,21 +142,30 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
 }
 
 extension on _SignUpScreenState {
-  void _signUp() {
-    _signUpPresenter.onTapSignUp(
-      onSuccessCallBack: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const Home(),
-        ),
-      ),
-      onErrorCallBack: (error) => Future.delayed(
-        const Duration(seconds: 3),
-        () => Fluttertoast.showToast(
-          msg: error.message ?? 'Error',
-          toastLength: Toast.LENGTH_SHORT,
-        ),
-      ),
+  Future<void> _signUp() async {
+    await EasyLoading.show(
+        maskType: EasyLoadingMaskType.black, dismissOnTap: false);
+    await _signUpPresenter.onTapSignUp(
+      onSuccessCallBack: () async {
+        await EasyLoading.dismiss();
+
+        return Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Home(),
+          ),
+        );
+      },
+      onErrorCallBack: (error) async {
+        await EasyLoading.dismiss();
+        return Future.delayed(
+          const Duration(seconds: 1),
+          () => Fluttertoast.showToast(
+            msg: error.message ?? 'Error',
+            toastLength: Toast.LENGTH_SHORT,
+          ),
+        );
+      },
     );
   }
 }

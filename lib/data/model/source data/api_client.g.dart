@@ -13,7 +13,7 @@ class _ApiClient implements ApiClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://mysterybox-swd-be.onrender.com/';
+    baseUrl ??= 'https://mysterybox-swd-be.onrender.com';
   }
 
   final Dio _dio;
@@ -21,9 +21,15 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<PackageResponse> getPackage() async {
+  Future<PackageResponse> getPackage(
+    String search,
+    int status,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'search': search,
+      r'status': status,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -89,7 +95,7 @@ class _ApiClient implements ApiClient {
     )
             .compose(
               _dio.options,
-              'api/v1/login',
+              '/api/v1/login',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -107,7 +113,8 @@ class _ApiClient implements ApiClient {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = userRequest;
+    final _data = <String, dynamic>{};
+    _data.addAll(userRequest.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<AuthLogin>(Options(
       method: 'POST',
@@ -116,7 +123,7 @@ class _ApiClient implements ApiClient {
     )
             .compose(
               _dio.options,
-              'api/v1/register',
+              '/api/v1/register',
               queryParameters: queryParameters,
               data: _data,
             )
