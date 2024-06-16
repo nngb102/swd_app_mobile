@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../injection/injector.dart';
@@ -8,6 +9,7 @@ import '../../resources/app_texts.dart';
 import '../../widget/app_logo.dart';
 import '../../widget/input_password.dart';
 import '../../widget/input_user_name.dart';
+import '../sign_up/sign_up_screen.dart';
 import 'bloc/sign_in_presenter.dart';
 import 'components/button_log_in.dart';
 
@@ -106,21 +108,31 @@ class _SignInState extends State<SignIn> {
                       const SizedBox(
                         height: 24,
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             AppTexts.notHaveAccount,
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 15,
                             ),
                           ),
-                          Text(
-                            AppTexts.registerNow,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              AppTexts.registerNow,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ],
