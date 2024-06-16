@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/model/auth/result.dart';
 
+import '../../../../data/model/package_themes/themes_model.dart';
 import '../../../../data/model/source%20data/api_client.dart';
 import '../../../base/custom_exception.dart';
 import 'choose_box_state.dart';
@@ -23,7 +24,10 @@ class ChooseBoxPresenter extends Cubit<ChooseBoxState> {
       (value) => value.when(
         success: (data) {
           final themes = data.themes.reversed.toList();
-          emit(state.copyWith(themes: themes));
+          emit(state.copyWith(themes: [
+            ThemesModel(id: '0', name: 'All', description: ''),
+            ThemesModel(id: '1', name: 'All', description: '')
+          ]));
         },
         failure: (error) => onErrorCallBack?.call(error),
       ),

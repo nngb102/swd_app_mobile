@@ -42,8 +42,6 @@ class MyApp extends StatelessWidget {
         builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        // theme: getAppTheme(Brightness.light),
-        // darkTheme: getAppTheme(Brightness.dark),
-        home: SignIn());
+        home: Home());
   }
 }

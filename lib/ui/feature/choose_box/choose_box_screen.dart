@@ -35,7 +35,7 @@ class _ChooseBoxScreenState extends BasePageState<ChooseBoxScreen> {
   Widget buildBody(BuildContext context) {
     return BlocBuilder<ChooseBoxPresenter, ChooseBoxState>(
       bloc: _chooseBoxPresenter,
-      buildWhen: (previous, current) => false,
+      buildWhen: (previous, current) => previous.themes != current.themes,
       builder: (context, state) {
         return ListView.builder(
           itemBuilder: (context, index) => ItemTheme(

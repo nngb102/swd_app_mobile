@@ -1,74 +1,146 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/model/package_themes/themes_model.dart';
 import '../../../resources/app_colors.dart';
-import '../../../resources/app_text_styles.dart';
+import '../../../widget/app_logo.dart';
 
 class ItemTheme extends StatelessWidget {
   const ItemTheme({
     required this.theme,
     super.key,
   });
+
   final ThemesModel theme;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {},
-        child: Container(
+    return Container(
+      padding: EdgeInsets.only(top: 10, right: 50, left: 15),
+      margin: EdgeInsets.only(top: 10, right: 15, left: 15),
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 3,
+          color: AppColors.primaryButton2,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      height: 200,
+      child: Row(
+        children: [
+          _buildImage(),
+          const SizedBox(
+            width: 25,
+          ),
+          _buildInformation()
+        ],
+      ),
+    );
+  }
+
+  ClipRRect _buildImage() {
+    return ClipRRect(
+      borderRadius: const BorderRadius.all(
+        Radius.circular(15),
+      ),
+      child: CachedNetworkImage(
+        imageUrl:
+            'https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/02_2020/mua-reu-da-nam-o-8.jpg',
+        fit: BoxFit.fill,
+        imageBuilder: (context, imageProvider) => Container(
           height: 200,
-          padding: const EdgeInsets.all(5),
-          child: Stack(
+          width: 150,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        placeholder: (context, url) => Container(
+          height: 200,
+          width: 150,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 0.2,
+              color: Colors.white,
+            ),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          alignment: Alignment.center,
+          child: CircularProgressIndicator(),
+        ),
+        errorWidget: (context, url, error) => Container(
+          height: 200,
+          width: 150,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 0.2,
+              color: Colors.white,
+            ),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          alignment: Alignment.center,
+          child: Icon(
+            Icons.error_outline,
+            color: Colors.red,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Expanded _buildInformation() {
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppLogo(),
+          Text(
+            theme.name ?? '',
+            softWrap: true,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            theme.description ?? '',
+            softWrap: true,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
             children: [
-              Image.asset(
-                'assets/images/kid_theme.png',
-                fit: BoxFit.cover,
-              ),
-              Positioned(
-                bottom: 5,
-                top: 5,
-                right: 5,
-                left: 5,
+              InkWell(
+                onTap: () {},
                 child: Container(
-                  height: 200,
-                  padding: const EdgeInsets.symmetric(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 8,
                     horizontal: 15,
-                    vertical: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: AppColors.primaryButton2,
                   ),
                   alignment: Alignment.center,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        theme.name ?? '',
-                        style: AppTextStyles.s20w400.copyWith(
-                          color: AppColors.blueText,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        theme.description ?? '',
-                        maxLines: 2,
-                        style: AppTextStyles.s11w400,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      // Text(
-                      //   '${package.price ?? ''}  VND',
-                      //   maxLines: 2,
-                      //   style: AppTextStyles.s14w600.copyWith(
-                      //     color: const Color(0xFFFFA451),
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                  child: Text('Choose Box'),
                 ),
               ),
+              Spacer(),
             ],
-          ),
-        ));
+          )
+        ],
+      ),
+    );
   }
 }
