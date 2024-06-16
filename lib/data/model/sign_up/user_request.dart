@@ -5,7 +5,6 @@ part 'user_request.g.dart';
 
 @freezed
 class UserRequest with _$UserRequest {
-  @JsonSerializable(explicitToJson: true)
   factory UserRequest({
     @JsonKey(name: 'username') required String username,
     @JsonKey(name: 'password') required String password,
@@ -19,6 +18,4 @@ class UserRequest with _$UserRequest {
 
   factory UserRequest.fromJson(Map<String, dynamic> json) =>
       _$UserRequestFromJson(json);
-
-  const UserRequest._();
 }

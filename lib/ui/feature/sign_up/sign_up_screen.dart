@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../injection/injector.dart';
 import '../../base/base_page.dart';
@@ -7,6 +8,7 @@ import '../../widget/app_logo.dart';
 import '../../widget/common_button/common_button.dart';
 import '../../widget/text_input/common_text_input.dart';
 
+import '../home/home.dart';
 import 'bloc/sign_up_presenter.dart';
 
 class SignUpScreen extends BasePage {
@@ -30,6 +32,9 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
 
   @override
   Color? backgroundColor(BuildContext context) => AppColors.primary2;
+
+  @override
+  bool get resizeToAvoidBottomInset => true;
   @override
   Widget buildBody(BuildContext context) {
     return _buildBody();
@@ -116,20 +121,12 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
                     textEditingController: textEditingControllerPassword,
                     onChanged: (value) {},
                   ),
-                  // const SizedBox(height: 20),
-                  // const Text('Confirm Password'),
-                  // const SizedBox(height: 10),
-                  // // Ô Nhập Password
-                  // CommonTextInput(
-                  //   hintText: 'Enter your confirm password',
-                  //   isPass: true,
-                  //   textEditingController: textEditingControllerConfirmPassword,
-                  //   onChanged: (value) {},
-                  // ),
                   const SizedBox(height: 40),
 
                   CommonButton(
-                    onTap: () {},
+                    onTap: () {
+                      _signUp();
+                    },
                     title: 'Sign Up',
                   ),
                   const SizedBox(height: 30),
@@ -137,6 +134,26 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+extension on _SignUpScreenState {
+  void _signUp() {
+    _signUpPresenter.onTapSignUp(
+      onSuccessCallBack: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Home(),
+        ),
+      ),
+      onErrorCallBack: (error) => Future.delayed(
+        const Duration(seconds: 3),
+        () => Fluttertoast.showToast(
+          msg: error.message ?? 'Error',
+          toastLength: Toast.LENGTH_SHORT,
         ),
       ),
     );

@@ -48,8 +48,10 @@ class SignUpPresenter extends Cubit<SignUpState> {
     emit(state.copyWith(address: address));
   }
 
-  Future<void> onTapSignUp(Function()? onSuccessCallBack,
-      Function(CustomException error)? onErrorCallBack) async {
+  Future<void> onTapSignUp({
+    Function()? onSuccessCallBack,
+    Function(CustomException error)? onErrorCallBack,
+  }) async {
     final userRequest = UserRequest(
       username: state.email,
       password: state.password,
@@ -69,13 +71,5 @@ class SignUpPresenter extends Cubit<SignUpState> {
         failure: (error) => onErrorCallBack?.call(error),
       ),
     );
-  }
-
-  void addToken() {
-    uiPresenter.addToken(state.token);
-  }
-
-  Future<void> callBack(Function showToast) async {
-    await showToast.call();
   }
 }

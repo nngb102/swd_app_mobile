@@ -1,8 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../data/model/auth/auth_login.dart';
-
-import '../../../../data/model/auth/user_response.dart';
 import '../../../../data/model/sign_up/user_request.dart';
 
 part 'sign_up_state.freezed.dart';
@@ -19,20 +16,12 @@ class SignUpState with _$SignUpState {
     required String phone,
     required String address,
     required UserRequest userRequest,
-    required AuthLogin authLogin,
-    required String? token,
   }) = _SignInState;
 
   const SignUpState._();
 
   factory SignUpState.initial() => SignUpState(
         check: false,
-        authLogin: AuthLogin(
-          message: '',
-          accessToken: '',
-          success: true,
-          user: UserResponse.initial(),
-        ),
         email: '',
         password: '',
         fullName: '',
@@ -48,6 +37,5 @@ class SignUpState with _$SignUpState {
           status: false,
           role: 'ADMIN',
         ),
-        token: null,
       );
 }

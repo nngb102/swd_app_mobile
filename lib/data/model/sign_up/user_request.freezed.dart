@@ -196,9 +196,8 @@ class __$$UserRequestImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true)
-class _$UserRequestImpl extends _UserRequest {
+@JsonSerializable()
+class _$UserRequestImpl implements _UserRequest {
   _$UserRequestImpl(
       {@JsonKey(name: 'username') required this.username,
       @JsonKey(name: 'password') required this.password,
@@ -207,8 +206,7 @@ class _$UserRequestImpl extends _UserRequest {
       @JsonKey(name: 'phone') required this.phone,
       @JsonKey(name: 'address') required this.address,
       @JsonKey(name: 'role') required this.role,
-      @JsonKey(name: 'status') required this.status})
-      : super._();
+      @JsonKey(name: 'status') required this.status});
 
   factory _$UserRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserRequestImplFromJson(json);
@@ -280,7 +278,7 @@ class _$UserRequestImpl extends _UserRequest {
   }
 }
 
-abstract class _UserRequest extends UserRequest {
+abstract class _UserRequest implements UserRequest {
   factory _UserRequest(
       {@JsonKey(name: 'username') required final String username,
       @JsonKey(name: 'password') required final String password,
@@ -290,7 +288,6 @@ abstract class _UserRequest extends UserRequest {
       @JsonKey(name: 'address') required final String address,
       @JsonKey(name: 'role') required final String role,
       @JsonKey(name: 'status') required final bool status}) = _$UserRequestImpl;
-  _UserRequest._() : super._();
 
   factory _UserRequest.fromJson(Map<String, dynamic> json) =
       _$UserRequestImpl.fromJson;

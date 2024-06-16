@@ -23,8 +23,6 @@ mixin _$SignUpState {
   String get phone => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   UserRequest get userRequest => throw _privateConstructorUsedError;
-  AuthLogin get authLogin => throw _privateConstructorUsedError;
-  String? get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpStateCopyWith<SignUpState> get copyWith =>
@@ -44,12 +42,9 @@ abstract class $SignUpStateCopyWith<$Res> {
       String fullName,
       String phone,
       String address,
-      UserRequest userRequest,
-      AuthLogin authLogin,
-      String? token});
+      UserRequest userRequest});
 
   $UserRequestCopyWith<$Res> get userRequest;
-  $AuthLoginCopyWith<$Res> get authLogin;
 }
 
 /// @nodoc
@@ -72,8 +67,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? phone = null,
     Object? address = null,
     Object? userRequest = null,
-    Object? authLogin = null,
-    Object? token = freezed,
   }) {
     return _then(_value.copyWith(
       check: null == check
@@ -104,14 +97,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.userRequest
           : userRequest // ignore: cast_nullable_to_non_nullable
               as UserRequest,
-      authLogin: null == authLogin
-          ? _value.authLogin
-          : authLogin // ignore: cast_nullable_to_non_nullable
-              as AuthLogin,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 
@@ -120,14 +105,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   $UserRequestCopyWith<$Res> get userRequest {
     return $UserRequestCopyWith<$Res>(_value.userRequest, (value) {
       return _then(_value.copyWith(userRequest: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AuthLoginCopyWith<$Res> get authLogin {
-    return $AuthLoginCopyWith<$Res>(_value.authLogin, (value) {
-      return _then(_value.copyWith(authLogin: value) as $Val);
     });
   }
 }
@@ -147,14 +124,10 @@ abstract class _$$SignInStateImplCopyWith<$Res>
       String fullName,
       String phone,
       String address,
-      UserRequest userRequest,
-      AuthLogin authLogin,
-      String? token});
+      UserRequest userRequest});
 
   @override
   $UserRequestCopyWith<$Res> get userRequest;
-  @override
-  $AuthLoginCopyWith<$Res> get authLogin;
 }
 
 /// @nodoc
@@ -175,8 +148,6 @@ class __$$SignInStateImplCopyWithImpl<$Res>
     Object? phone = null,
     Object? address = null,
     Object? userRequest = null,
-    Object? authLogin = null,
-    Object? token = freezed,
   }) {
     return _then(_$SignInStateImpl(
       check: null == check
@@ -207,14 +178,6 @@ class __$$SignInStateImplCopyWithImpl<$Res>
           ? _value.userRequest
           : userRequest // ignore: cast_nullable_to_non_nullable
               as UserRequest,
-      authLogin: null == authLogin
-          ? _value.authLogin
-          : authLogin // ignore: cast_nullable_to_non_nullable
-              as AuthLogin,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -229,9 +192,7 @@ class _$SignInStateImpl extends _SignInState {
       required this.fullName,
       required this.phone,
       required this.address,
-      required this.userRequest,
-      required this.authLogin,
-      required this.token})
+      required this.userRequest})
       : super._();
 
   @override
@@ -248,14 +209,10 @@ class _$SignInStateImpl extends _SignInState {
   final String address;
   @override
   final UserRequest userRequest;
-  @override
-  final AuthLogin authLogin;
-  @override
-  final String? token;
 
   @override
   String toString() {
-    return 'SignUpState(check: $check, email: $email, password: $password, fullName: $fullName, phone: $phone, address: $address, userRequest: $userRequest, authLogin: $authLogin, token: $token)';
+    return 'SignUpState(check: $check, email: $email, password: $password, fullName: $fullName, phone: $phone, address: $address, userRequest: $userRequest)';
   }
 
   @override
@@ -272,15 +229,12 @@ class _$SignInStateImpl extends _SignInState {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.userRequest, userRequest) ||
-                other.userRequest == userRequest) &&
-            (identical(other.authLogin, authLogin) ||
-                other.authLogin == authLogin) &&
-            (identical(other.token, token) || other.token == token));
+                other.userRequest == userRequest));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, check, email, password, fullName,
-      phone, address, userRequest, authLogin, token);
+      phone, address, userRequest);
 
   @JsonKey(ignore: true)
   @override
@@ -297,9 +251,7 @@ abstract class _SignInState extends SignUpState {
       required final String fullName,
       required final String phone,
       required final String address,
-      required final UserRequest userRequest,
-      required final AuthLogin authLogin,
-      required final String? token}) = _$SignInStateImpl;
+      required final UserRequest userRequest}) = _$SignInStateImpl;
   _SignInState._() : super._();
 
   @override
@@ -316,10 +268,6 @@ abstract class _SignInState extends SignUpState {
   String get address;
   @override
   UserRequest get userRequest;
-  @override
-  AuthLogin get authLogin;
-  @override
-  String? get token;
   @override
   @JsonKey(ignore: true)
   _$$SignInStateImplCopyWith<_$SignInStateImpl> get copyWith =>
