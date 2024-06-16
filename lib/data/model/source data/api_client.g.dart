@@ -34,7 +34,7 @@ class _ApiClient implements ApiClient {
     )
             .compose(
               _dio.options,
-              '/api/v1/get-package?search=&status=1',
+              '/api/v1/get-package',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -44,6 +44,33 @@ class _ApiClient implements ApiClient {
               baseUrl,
             ))));
     final value = PackageResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ThemeResponse> getThemes() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ThemeResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/get-themes?search=tr&status=1',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ThemeResponse.fromJson(_result.data!);
     return value;
   }
 

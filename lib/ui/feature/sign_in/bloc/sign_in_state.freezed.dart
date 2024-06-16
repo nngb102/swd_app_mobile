@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInState {
-  bool get check => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
   AuthLogin get authLogin => throw _privateConstructorUsedError;
@@ -35,8 +34,7 @@ abstract class $SignInStateCopyWith<$Res> {
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
   $Res call(
-      {bool check,
-      String email,
+      {String userName,
       String password,
       User user,
       AuthLogin authLogin,
@@ -58,21 +56,16 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? check = null,
-    Object? email = null,
+    Object? userName = null,
     Object? password = null,
     Object? user = null,
     Object? authLogin = null,
     Object? token = freezed,
   }) {
     return _then(_value.copyWith(
-      check: null == check
-          ? _value.check
-          : check // ignore: cast_nullable_to_non_nullable
-              as bool,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -111,8 +104,7 @@ abstract class _$$SignInStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool check,
-      String email,
+      {String userName,
       String password,
       User user,
       AuthLogin authLogin,
@@ -133,21 +125,16 @@ class __$$SignInStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? check = null,
-    Object? email = null,
+    Object? userName = null,
     Object? password = null,
     Object? user = null,
     Object? authLogin = null,
     Object? token = freezed,
   }) {
     return _then(_$SignInStateImpl(
-      check: null == check
-          ? _value.check
-          : check // ignore: cast_nullable_to_non_nullable
-              as bool,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -173,8 +160,7 @@ class __$$SignInStateImplCopyWithImpl<$Res>
 
 class _$SignInStateImpl extends _SignInState {
   _$SignInStateImpl(
-      {required this.check,
-      required this.email,
+      {required this.userName,
       required this.password,
       required this.user,
       required this.authLogin,
@@ -182,9 +168,7 @@ class _$SignInStateImpl extends _SignInState {
       : super._();
 
   @override
-  final bool check;
-  @override
-  final String email;
+  final String userName;
   @override
   final String password;
   @override
@@ -196,7 +180,7 @@ class _$SignInStateImpl extends _SignInState {
 
   @override
   String toString() {
-    return 'SignInState(check: $check, email: $email, password: $password, user: $user, authLogin: $authLogin, token: $token)';
+    return 'SignInState(userName: $userName, password: $password, user: $user, authLogin: $authLogin, token: $token)';
   }
 
   @override
@@ -204,8 +188,8 @@ class _$SignInStateImpl extends _SignInState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignInStateImpl &&
-            (identical(other.check, check) || other.check == check) &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.user, user) || other.user == user) &&
@@ -216,7 +200,7 @@ class _$SignInStateImpl extends _SignInState {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, check, email, password, user, authLogin, token);
+      Object.hash(runtimeType, userName, password, user, authLogin, token);
 
   @JsonKey(ignore: true)
   @override
@@ -227,8 +211,7 @@ class _$SignInStateImpl extends _SignInState {
 
 abstract class _SignInState extends SignInState {
   factory _SignInState(
-      {required final bool check,
-      required final String email,
+      {required final String userName,
       required final String password,
       required final User user,
       required final AuthLogin authLogin,
@@ -236,9 +219,7 @@ abstract class _SignInState extends SignInState {
   _SignInState._() : super._();
 
   @override
-  bool get check;
-  @override
-  String get email;
+  String get userName;
   @override
   String get password;
   @override

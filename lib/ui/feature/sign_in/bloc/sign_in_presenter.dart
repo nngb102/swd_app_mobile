@@ -15,15 +15,12 @@ class SignInPresenter extends Cubit<SignInState> {
           state ?? SignInState.initial(),
         );
   final UiPresenter uiPresenter;
-  TextEditingController textEditingControllerEmail = TextEditingController();
+  TextEditingController textEditingControllerUserName = TextEditingController();
   TextEditingController textEditingControllerPassword = TextEditingController();
   ApiClient apiClient = ApiClient(Dio());
-  void check() {
-    emit(state.copyWith(check: !state.check));
-  }
-
-  void inputEmail(String email) {
-    emit(state.copyWith(email: email));
+  
+  void inputUserName(String userName) {
+    emit(state.copyWith(userName: userName));
   }
 
   void inputPassword(String password) {
@@ -31,7 +28,7 @@ class SignInPresenter extends Cubit<SignInState> {
   }
 
   Future<void> onTapSignIn() async {
-    final user = User(username: state.email, password: state.password);
+    final user = User(username: state.userName, password: state.password);
     final authLogin = await apiClient.postLogIn(user);
 
     final token = authLogin.accessToken;

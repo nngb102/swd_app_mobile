@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/model/pagesale/sale.dart';
 import '../../../resources/app_colors.dart';
 
+import '../../../widget/app_logo.dart';
+import '../../choose_box/choose_box_screen.dart';
 import '../bloc/home_presenter.dart';
 import '../bloc/home_state.dart';
-
 import 'item_product.dart';
 
 class Body extends StatelessWidget {
@@ -30,6 +32,7 @@ class Body extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                AppLogo(),
                 const SizedBox(
                   height: 30,
                 ),
@@ -73,9 +76,6 @@ class Body extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
                 const Center(
                   child: Text(
                     'Recommend',
@@ -86,9 +86,12 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 HomeGetListProduct(
                   homePresenter: homePresenter,
-                )
+                ),
               ],
             ),
           ),
@@ -108,15 +111,23 @@ class HomeGetListProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomePresenter, HomeState>(
       bloc: homePresenter,
-      builder: (context, state) => ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: state.packages.length,
-        itemBuilder: (context, index) => ItemProduct(
-          package: state.packages[index],
-          onTap: () {
-            //TODO
-          },
+      builder: (context, state) => SizedBox(
+        height: 200,
+        child: ListView.builder(
+          itemCount: state.packages.length,
+          itemBuilder: (context, index) => ItemProduct(
+            package: state.packages[index],
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChooseBoxScreen(),
+                ),
+              );
+            },
+          ),
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
         ),
       ),
     );

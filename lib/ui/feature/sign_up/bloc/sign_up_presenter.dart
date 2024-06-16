@@ -6,6 +6,7 @@ import '../../../../data/model/auth/result.dart';
 
 import '../../../../data/model/sign_up/user_request.dart';
 import '../../../../data/model/source%20data/api_client.dart';
+import '../../../base/custom_exception.dart';
 import '../../../bloc/ui_presenter.dart';
 import 'sign_up_state.dart';
 
@@ -47,7 +48,8 @@ class SignUpPresenter extends Cubit<SignUpState> {
     emit(state.copyWith(address: address));
   }
 
-  Future<void> onTapSignUp(Function()? onSuccessCallBack) async {
+  Future<void> onTapSignUp(Function()? onSuccessCallBack,
+      Function(CustomException error)? onErrorCallBack) async {
     final userRequest = UserRequest(
       username: state.email,
       password: state.password,
@@ -64,7 +66,7 @@ class SignUpPresenter extends Cubit<SignUpState> {
         success: (data) {
           onSuccessCallBack?.call();
         },
-        failure: (error) {},
+        failure: (error) => onErrorCallBack?.call(error),
       ),
     );
   }

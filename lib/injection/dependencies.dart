@@ -1,5 +1,6 @@
 import '../ui/bloc/ui_module.dart';
 
+import '../ui/feature/choose_box/bloc/choose_box_module.dart';
 import '../ui/feature/home/bloc/home_module.dart';
 
 import '../ui/feature/sign_in/bloc/sign_in_module.dart';
@@ -43,8 +44,11 @@ class DependencyManager {
     // Ui
     await UiModule.inject();
 
-      // Ui
+    // SignUp
     await SignUpModule.inject();
+
+    // Theme Box
+    await ChooseBoxModule.inject();
 
     // //add device
     // await ConfigWifiModule.inject();

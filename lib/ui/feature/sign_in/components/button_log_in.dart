@@ -28,7 +28,7 @@ class ButtonLogin extends StatelessWidget {
               maskType: EasyLoadingMaskType.black, dismissOnTap: false);
 
           /// Nếu email hoặc password rỗng thì hiển thị thông báo
-          if (state.email.isEmpty || state.password.isEmpty) {
+          if (state.userName.isEmpty || state.password.isEmpty) {
             return showToast('vui lòng nhập email và mật khẩu của bạn');
           } else {
             await signInPresenter.onTapSignIn();

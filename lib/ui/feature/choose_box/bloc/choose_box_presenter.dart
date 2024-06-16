@@ -6,23 +6,24 @@ import '../../../../data/model/auth/result.dart';
 
 import '../../../../data/model/source%20data/api_client.dart';
 import '../../../base/custom_exception.dart';
-import 'home_state.dart';
+import 'choose_box_state.dart';
 
-class HomePresenter extends Cubit<HomeState> {
-  HomePresenter({
-    @visibleForTesting HomeState? state,
+class ChooseBoxPresenter extends Cubit<ChooseBoxState> {
+  ChooseBoxPresenter({
+    @visibleForTesting ChooseBoxState? state,
   }) : super(
-          state ?? HomeState.initial(),
+          state ?? ChooseBoxState.initial(),
         );
+
   ApiClient apiClient = ApiClient(Dio());
-  
-  Future<void> getPackage(
+
+  Future<void> getTheme(
       Function(CustomException error)? onErrorCallBack) async {
-    await Result.guardFuture(() async => apiClient.getPackage()).then(
+    await Result.guardFuture(() async => apiClient.getThemes()).then(
       (value) => value.when(
         success: (data) {
-          final packages = data.packages.reversed.toList();
-          emit(state.copyWith(packages: packages));
+          final themes = data.themes.reversed.toList();
+          emit(state.copyWith(themes: themes));
         },
         failure: (error) => onErrorCallBack?.call(error),
       ),

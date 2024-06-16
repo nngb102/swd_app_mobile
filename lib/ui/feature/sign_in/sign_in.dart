@@ -50,7 +50,7 @@ class _SignInState extends State<SignIn> {
           Form(
             child: Column(
               children: [
-                // Ô Nhập email
+                // Ô Nhập username
                 InputUserName(
                   signInPresenter: _signInPresenter,
                 ),

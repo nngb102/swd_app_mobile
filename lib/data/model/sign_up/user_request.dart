@@ -21,15 +21,4 @@ class UserRequest with _$UserRequest {
       _$UserRequestFromJson(json);
 
   const UserRequest._();
-
-  // factory UserRequest.initial() => UserRequest(
-  //       id: 0,
-  //       username: '',
-  //       password: '',
-  //       fullName: '',
-  //       email: '',
-  //       phone: '',
-  //       address: '',
-  //       status: false,
-  //     );
 }

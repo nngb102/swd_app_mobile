@@ -4,6 +4,7 @@ import 'package:retrofit/retrofit.dart';
 import '../../../utilities/constants/api_constants.dart';
 import '../auth/auth_login.dart';
 import '../home/package_response.dart';
+import '../package_themes/theme_response.dart';
 import '../sign_in/user.dart';
 import '../sign_up/user_request.dart';
 
@@ -17,6 +18,9 @@ abstract class ApiClient {
 
   @GET(ApiConstants.homeGetPackage)
   Future<PackageResponse> getPackage();
+
+  @GET(ApiConstants.getThemes)
+  Future<ThemeResponse> getThemes();
 
   @POST(ApiConstants.userLogin)
   Future<AuthLogin> postLogIn(

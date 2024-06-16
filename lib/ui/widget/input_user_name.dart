@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'text_field_input.dart';
 import '../feature/sign_in/bloc/sign_in_presenter.dart';
 import '../feature/sign_in/bloc/sign_in_state.dart';
+import 'text_field_input.dart';
 
 class InputUserName extends StatelessWidget {
   const InputUserName({
@@ -16,13 +16,13 @@ class InputUserName extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignInPresenter, SignInState>(
       bloc: signInPresenter,
-      buildWhen: (previous, current) => previous.email != current.email,
+      buildWhen: (previous, current) => previous.userName != current.userName,
       builder: (context, state) => TextFieldInput(
-        hintText: 'Email',
+        hintText: 'UserName',
         isPass: false,
-        textEditingController: signInPresenter.textEditingControllerEmail,
-        onChanged: (value) => signInPresenter.inputEmail(value),
-        textInputType: TextInputType.emailAddress,
+        textEditingController: signInPresenter.textEditingControllerUserName,
+        onChanged: (value) => signInPresenter.inputUserName(value),
+        textInputType: TextInputType.name,
       ),
     );
   }

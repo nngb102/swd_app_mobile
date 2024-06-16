@@ -21,9 +21,10 @@ class ApiConstants {
   static const repository = '/repositories/{id}';
 
   // Home
-  static const homeGetPackage = '/api/v1/get-package?search=&status=1';
+  static const homeGetPackage = '/api/v1/get-package';
   static const homeGetProductDetail =
       '/api/Home/get-product-detail-by/{productId}';
+  static const getThemes = '/api/v1/get-themes?search=tr&status=1';
 
   //order
   static const postOrder = '/api/Order/add-order';

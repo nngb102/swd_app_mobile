@@ -32,6 +32,7 @@ class AppColors {
   static const defaultIconStarColor = Color(0xFFC4C4C4);
   static const greyFillR = Color(0xFFDCDCDC);
   static const greyTextL = Color(0xFFAEAEAE);
+  static const blueText = Color(0xFF7896FF);
 
   //splash
   static const mainText = Color(0xFF2A2A37);

@@ -12,8 +12,7 @@ enum Status { init, inProgress, success }
 @freezed
 class SignInState with _$SignInState {
   factory SignInState({
-    required bool check,
-    required String email,
+    required String userName,
     required String password,
     required User user,
     required AuthLogin authLogin,
@@ -23,14 +22,13 @@ class SignInState with _$SignInState {
   const SignInState._();
 
   factory SignInState.initial() => SignInState(
-        check: false,
         authLogin: AuthLogin(
           message: '',
           accessToken: '',
           success: true,
           user: UserResponse.initial(),
         ),
-        email: '',
+        userName: '',
         password: '',
         user: User(
           password: 'string',
