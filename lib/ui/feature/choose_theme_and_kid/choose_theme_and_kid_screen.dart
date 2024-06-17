@@ -39,7 +39,7 @@ class _ChooseThemeAndKidScreenState
   @override
   PreferredSizeWidget? buildAppBar(BuildContext context) {
     return AppBar(
-      title: const Text('Choose Box'),
+      title: const Text('Choose Theme and Kid'),
     );
   }
 
@@ -76,16 +76,28 @@ class _ChooseThemeAndKidScreenState
                 return CommonButton(
                   enable: _chooseThemeAndKidPresenter.state.isEnable,
                   title: 'Next',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ConfirmInfoScreen(
-                          package: widget.package,
-                          theme: state.themeSelected!,
-                          kid: state.kidSelected!,
-                        ),
-                      ),
+                  onTap: () async {
+                    await EasyLoading.show(
+                        maskType: EasyLoadingMaskType.black,
+                        dismissOnTap: false);
+                    await _chooseThemeAndKidPresenter.updateProfile(
+                      onSuccessCallBack: () async {
+                        await EasyLoading.dismiss();
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ConfirmInfoScreen(
+                              package: widget.package,
+                              theme: state.themeSelected!,
+                              kid: state.kidSelected!,
+                            ),
+                          ),
+                        );
+                      },
+                      onErrorCallBack: (error) async {
+                        await EasyLoading.dismiss();
+                        await EasyLoading.showError(error.message ?? 'Error');
+                      },
                     );
                   },
                 );

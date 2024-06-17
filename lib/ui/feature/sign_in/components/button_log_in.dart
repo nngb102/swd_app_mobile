@@ -31,7 +31,18 @@ class ButtonLogin extends StatelessWidget {
           if (state.userName.isEmpty || state.password.isEmpty) {
             return showToast('vui lòng nhập email và mật khẩu của bạn');
           } else {
-            await signInPresenter.onTapSignIn();
+            await signInPresenter.onTapSignIn(
+              onErrorCallBack: (error) async {
+                await EasyLoading.dismiss();
+                return Future.delayed(
+                  const Duration(seconds: 1),
+                  () => Fluttertoast.showToast(
+                    msg: error.message ?? 'Error',
+                    toastLength: Toast.LENGTH_SHORT,
+                  ),
+                );
+              },
+            );
             if (signInPresenter.state.token == null) {
               await signInPresenter.callBack(showToast);
             } else {

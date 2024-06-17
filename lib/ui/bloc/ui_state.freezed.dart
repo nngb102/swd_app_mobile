@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UiState {
   String? get token => throw _privateConstructorUsedError;
+  UserResponse? get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UiStateCopyWith<UiState> get copyWith => throw _privateConstructorUsedError;
@@ -27,7 +28,9 @@ abstract class $UiStateCopyWith<$Res> {
   factory $UiStateCopyWith(UiState value, $Res Function(UiState) then) =
       _$UiStateCopyWithImpl<$Res, UiState>;
   @useResult
-  $Res call({String? token});
+  $Res call({String? token, UserResponse? user});
+
+  $UserResponseCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -44,13 +47,30 @@ class _$UiStateCopyWithImpl<$Res, $Val extends UiState>
   @override
   $Res call({
     Object? token = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserResponse?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserResponseCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserResponseCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -61,7 +81,10 @@ abstract class _$$UiStateImplCopyWith<$Res> implements $UiStateCopyWith<$Res> {
       __$$UiStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? token});
+  $Res call({String? token, UserResponse? user});
+
+  @override
+  $UserResponseCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -76,12 +99,17 @@ class __$$UiStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? token = freezed,
+    Object? user = freezed,
   }) {
     return _then(_$UiStateImpl(
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserResponse?,
     ));
   }
 }
@@ -89,14 +117,17 @@ class __$$UiStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UiStateImpl extends _UiState {
-  _$UiStateImpl({required this.token}) : super._();
+  _$UiStateImpl({required this.token, this.user = null}) : super._();
 
   @override
   final String? token;
+  @override
+  @JsonKey()
+  final UserResponse? user;
 
   @override
   String toString() {
-    return 'UiState(token: $token)';
+    return 'UiState(token: $token, user: $user)';
   }
 
   @override
@@ -104,11 +135,12 @@ class _$UiStateImpl extends _UiState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UiStateImpl &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, token);
+  int get hashCode => Object.hash(runtimeType, token, user);
 
   @JsonKey(ignore: true)
   @override
@@ -118,11 +150,14 @@ class _$UiStateImpl extends _UiState {
 }
 
 abstract class _UiState extends UiState {
-  factory _UiState({required final String? token}) = _$UiStateImpl;
+  factory _UiState({required final String? token, final UserResponse? user}) =
+      _$UiStateImpl;
   _UiState._() : super._();
 
   @override
   String? get token;
+  @override
+  UserResponse? get user;
   @override
   @JsonKey(ignore: true)
   _$$UiStateImplCopyWith<_$UiStateImpl> get copyWith =>

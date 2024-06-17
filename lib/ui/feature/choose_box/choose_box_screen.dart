@@ -86,8 +86,58 @@ class _ChooseBoxState extends BasePageState<ChooseBoxScreen> {
                 return Visibility(
                   visible: state.boxSelected != null,
                   child: Padding(
-                    padding: EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(24),
                     child: CommonButton(
+                        onTap: () async {
+                          await EasyLoading.show(
+                              maskType: EasyLoadingMaskType.black,
+                              dismissOnTap: false);
+                          await _chooseBox.addOrderPackage(
+                            kidId: widget.kid.id,
+                            packageId: widget.package.id,
+                            nameOfKid: widget.kid.fullName ?? '',
+                            onSuccessCallBack: () async {
+                              await EasyLoading.dismiss();
+                              await showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text('Success'),
+                                    content: const Text('Order success'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('OK'),
+                                      )
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            onErrorCallBack: (error) async {
+                              await EasyLoading.dismiss();
+                              await showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text('Error'),
+                                    content: Text(error.message ?? ''),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('OK'),
+                                      )
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
                         title:
                             'Price : ${state.boxSelected?.priceAvarage ?? ''}'),
                   ),

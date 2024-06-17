@@ -6,6 +6,7 @@ import '../../../../data/model/auth/result.dart';
 
 import '../../../../data/model/package_themes/themes_model.dart';
 import '../../../../data/model/profile/kid_profile_by_user_id_model.dart';
+import '../../../../data/model/profile/theme_id_model.dart';
 import '../../../../data/model/source%20data/api_client.dart';
 import '../../../../injection/injector.dart';
 import '../../../base/custom_exception.dart';
@@ -43,6 +44,21 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
           final kidProfileByUserIdModel = data.kidProfilesByUserId;
           emit(
               state.copyWith(kidProfileByUserIdModel: kidProfileByUserIdModel));
+        },
+        failure: (error) => onErrorCallBack?.call(error),
+      ),
+    );
+  }
+
+  Future<void> updateProfile(
+      {Function()? onSuccessCallBack,
+      Function(CustomException error)? onErrorCallBack}) async {
+    await Result.guardFuture(() async => apiClient.updateProfile(
+        state.kidSelected?.id ?? 1,
+        ThemeIdModel(themeId: state.themeSelected?.id ?? 0))).then(
+      (value) => value.when(
+        success: (data) {
+          onSuccessCallBack?.call();
         },
         failure: (error) => onErrorCallBack?.call(error),
       ),

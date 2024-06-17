@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/model/auth/result.dart';
 
 import '../../../../data/model/my_stery_box/mystery_box_model.dart';
+import '../../../../data/model/order_package/order_package.dart';
 import '../../../../data/model/source%20data/api_client.dart';
 import '../../../../injection/injector.dart';
 import '../../../base/custom_exception.dart';
@@ -21,13 +22,44 @@ class ChooseBoxPresenter extends Cubit<ChooseBoxState> {
   ApiClient apiClient =
       ApiClient(Dio(), authToken: injector.get<UiPresenter>().state.token);
 
-  Future<void> getMysteryBox(Function(CustomException error)? onErrorCallBack) async {
+  Future<void> getMysteryBox(
+      Function(CustomException error)? onErrorCallBack) async {
     await Result.guardFuture(() async => apiClient.getMysteryBox()).then(
       (value) => value.when(
         success: (data) {
           final mysteryBoxs = data.mysteryBoxs;
 
           emit(state.copyWith(mysteryBoxs: mysteryBoxs));
+        },
+        failure: (error) => onErrorCallBack?.call(error),
+      ),
+    );
+  }
+
+  Future<void> addOrderPackage(
+      {required int kidId,
+      required int packageId,
+      required String nameOfKid,
+      required Function() onSuccessCallBack,
+      Function(CustomException error)? onErrorCallBack}) async {
+    final user = injector.get<UiPresenter>().state.user;
+    final orderPackage = OrderPackage(
+      kidId: kidId,
+      totalPrice: state.boxSelected?.priceAvarage ?? '500000',
+      nameOfAdult: user?.fullName ?? '',
+      nameOfKid: nameOfKid,
+      phone: user?.phone ?? '',
+      email: user?.email ?? '',
+      additionalNotes: 'This is a sample additional note',
+      status: true,
+    );
+    await Result.guardFuture(() async => apiClient.addOrderPackage(
+          packageId,
+          orderPackage,
+        )).then(
+      (value) => value.when(
+        success: (data) {
+          onSuccessCallBack.call();
         },
         failure: (error) => onErrorCallBack?.call(error),
       ),
