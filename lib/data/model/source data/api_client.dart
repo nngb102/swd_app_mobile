@@ -66,10 +66,10 @@ abstract class ApiClient {
   @POST(ApiConstants.addOrderPackage)
   Future<void> addOrderPackage(
     @Path('packageId') int packageId,
-    @Body() OrderPackage orderPackage,
+    // @Body() OrderPackage orderPackage,
   );
 
-  @POST(ApiConstants.updateProfile)
+  @PUT(ApiConstants.updateProfile)
   Future<void> updateProfile(
     @Path('kidId') int kidId,
     @Body() ThemeIdModel themeId,

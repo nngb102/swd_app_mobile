@@ -197,15 +197,11 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<void> addOrderPackage(
-    int packageId,
-    OrderPackage orderPackage,
-  ) async {
+  Future<void> addOrderPackage(int packageId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(orderPackage.toJson());
+    const Map<String, dynamic>? _data = null;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
@@ -213,7 +209,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          '/api/v1/add-order-package/${packageId}',
+          '/api/v1/add-order-package/5',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -235,13 +231,13 @@ class _ApiClient implements ApiClient {
     final _data = <String, dynamic>{};
     _data.addAll(themeId.toJson());
     await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'POST',
+      method: 'PUT',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/api/v1/update-profile/${kidId}',
+          '/api/v1/update-profile/{profileId}',
           queryParameters: queryParameters,
           data: _data,
         )

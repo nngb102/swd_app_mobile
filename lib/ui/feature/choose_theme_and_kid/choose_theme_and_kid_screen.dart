@@ -77,28 +77,28 @@ class _ChooseThemeAndKidScreenState
                   enable: _chooseThemeAndKidPresenter.state.isEnable,
                   title: 'Next',
                   onTap: () async {
-                    await EasyLoading.show(
-                        maskType: EasyLoadingMaskType.black,
-                        dismissOnTap: false);
-                    await _chooseThemeAndKidPresenter.updateProfile(
-                      onSuccessCallBack: () async {
-                        await EasyLoading.dismiss();
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ConfirmInfoScreen(
-                              package: widget.package,
-                              theme: state.themeSelected!,
-                              kid: state.kidSelected!,
-                            ),
-                          ),
-                        );
-                      },
-                      onErrorCallBack: (error) async {
-                        await EasyLoading.dismiss();
-                        await EasyLoading.showError(error.message ?? 'Error');
-                      },
+                    // await EasyLoading.show(
+                    //     maskType: EasyLoadingMaskType.black,
+                    //     dismissOnTap: false);
+                    // await _chooseThemeAndKidPresenter.updateProfile(
+                    //   onSuccessCallBack: () async {
+                    //     await EasyLoading.dismiss();
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ConfirmInfoScreen(
+                          package: widget.package,
+                          theme: state.themeSelected!,
+                          kid: state.kidSelected!,
+                        ),
+                      ),
                     );
+                    // },
+                    // onErrorCallBack: (error) async {
+                    //   await EasyLoading.dismiss();
+                    //   await EasyLoading.showError(error.message ?? 'Error');
+                    //   },
+                    // );
                   },
                 );
               },
