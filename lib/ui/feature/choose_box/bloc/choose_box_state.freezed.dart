@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChooseBoxState {
-  List<ThemesModel> get themes => throw _privateConstructorUsedError;
+  List<MysteryBoxModel> get mysteryBoxs => throw _privateConstructorUsedError;
+  MysteryBoxModel? get boxSelected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChooseBoxStateCopyWith<ChooseBoxState> get copyWith =>
@@ -29,7 +30,9 @@ abstract class $ChooseBoxStateCopyWith<$Res> {
           ChooseBoxState value, $Res Function(ChooseBoxState) then) =
       _$ChooseBoxStateCopyWithImpl<$Res, ChooseBoxState>;
   @useResult
-  $Res call({List<ThemesModel> themes});
+  $Res call({List<MysteryBoxModel> mysteryBoxs, MysteryBoxModel? boxSelected});
+
+  $MysteryBoxModelCopyWith<$Res>? get boxSelected;
 }
 
 /// @nodoc
@@ -45,14 +48,31 @@ class _$ChooseBoxStateCopyWithImpl<$Res, $Val extends ChooseBoxState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? themes = null,
+    Object? mysteryBoxs = null,
+    Object? boxSelected = freezed,
   }) {
     return _then(_value.copyWith(
-      themes: null == themes
-          ? _value.themes
-          : themes // ignore: cast_nullable_to_non_nullable
-              as List<ThemesModel>,
+      mysteryBoxs: null == mysteryBoxs
+          ? _value.mysteryBoxs
+          : mysteryBoxs // ignore: cast_nullable_to_non_nullable
+              as List<MysteryBoxModel>,
+      boxSelected: freezed == boxSelected
+          ? _value.boxSelected
+          : boxSelected // ignore: cast_nullable_to_non_nullable
+              as MysteryBoxModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MysteryBoxModelCopyWith<$Res>? get boxSelected {
+    if (_value.boxSelected == null) {
+      return null;
+    }
+
+    return $MysteryBoxModelCopyWith<$Res>(_value.boxSelected!, (value) {
+      return _then(_value.copyWith(boxSelected: value) as $Val);
+    });
   }
 }
 
@@ -64,7 +84,10 @@ abstract class _$$ChooseBoxStateImplCopyWith<$Res>
       __$$ChooseBoxStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ThemesModel> themes});
+  $Res call({List<MysteryBoxModel> mysteryBoxs, MysteryBoxModel? boxSelected});
+
+  @override
+  $MysteryBoxModelCopyWith<$Res>? get boxSelected;
 }
 
 /// @nodoc
@@ -78,13 +101,18 @@ class __$$ChooseBoxStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? themes = null,
+    Object? mysteryBoxs = null,
+    Object? boxSelected = freezed,
   }) {
     return _then(_$ChooseBoxStateImpl(
-      themes: null == themes
-          ? _value._themes
-          : themes // ignore: cast_nullable_to_non_nullable
-              as List<ThemesModel>,
+      mysteryBoxs: null == mysteryBoxs
+          ? _value._mysteryBoxs
+          : mysteryBoxs // ignore: cast_nullable_to_non_nullable
+              as List<MysteryBoxModel>,
+      boxSelected: freezed == boxSelected
+          ? _value.boxSelected
+          : boxSelected // ignore: cast_nullable_to_non_nullable
+              as MysteryBoxModel?,
     ));
   }
 }
@@ -92,21 +120,25 @@ class __$$ChooseBoxStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChooseBoxStateImpl extends _ChooseBoxState {
-  _$ChooseBoxStateImpl({required final List<ThemesModel> themes})
-      : _themes = themes,
+  _$ChooseBoxStateImpl(
+      {required final List<MysteryBoxModel> mysteryBoxs, this.boxSelected})
+      : _mysteryBoxs = mysteryBoxs,
         super._();
 
-  final List<ThemesModel> _themes;
+  final List<MysteryBoxModel> _mysteryBoxs;
   @override
-  List<ThemesModel> get themes {
-    if (_themes is EqualUnmodifiableListView) return _themes;
+  List<MysteryBoxModel> get mysteryBoxs {
+    if (_mysteryBoxs is EqualUnmodifiableListView) return _mysteryBoxs;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_themes);
+    return EqualUnmodifiableListView(_mysteryBoxs);
   }
 
   @override
+  final MysteryBoxModel? boxSelected;
+
+  @override
   String toString() {
-    return 'ChooseBoxState(themes: $themes)';
+    return 'ChooseBoxState(mysteryBoxs: $mysteryBoxs, boxSelected: $boxSelected)';
   }
 
   @override
@@ -114,12 +146,15 @@ class _$ChooseBoxStateImpl extends _ChooseBoxState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChooseBoxStateImpl &&
-            const DeepCollectionEquality().equals(other._themes, _themes));
+            const DeepCollectionEquality()
+                .equals(other._mysteryBoxs, _mysteryBoxs) &&
+            (identical(other.boxSelected, boxSelected) ||
+                other.boxSelected == boxSelected));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_themes));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_mysteryBoxs), boxSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -130,12 +165,15 @@ class _$ChooseBoxStateImpl extends _ChooseBoxState {
 }
 
 abstract class _ChooseBoxState extends ChooseBoxState {
-  factory _ChooseBoxState({required final List<ThemesModel> themes}) =
-      _$ChooseBoxStateImpl;
+  factory _ChooseBoxState(
+      {required final List<MysteryBoxModel> mysteryBoxs,
+      final MysteryBoxModel? boxSelected}) = _$ChooseBoxStateImpl;
   _ChooseBoxState._() : super._();
 
   @override
-  List<ThemesModel> get themes;
+  List<MysteryBoxModel> get mysteryBoxs;
+  @override
+  MysteryBoxModel? get boxSelected;
   @override
   @JsonKey(ignore: true)
   _$$ChooseBoxStateImplCopyWith<_$ChooseBoxStateImpl> get copyWith =>

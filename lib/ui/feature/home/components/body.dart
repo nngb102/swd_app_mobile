@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/model/pagesale/sale.dart';
 import '../../../resources/app_colors.dart';
 
 import '../../../widget/app_logo.dart';
-import '../../choose_box/choose_box_screen.dart';
+import '../../choose_theme_and_kid/choose_theme_and_kid_screen.dart';
 import '../bloc/home_presenter.dart';
 import '../bloc/home_state.dart';
 import 'item_product.dart';
@@ -121,7 +120,9 @@ class HomeGetListProduct extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ChooseBoxScreen(),
+                  builder: (context) => ChooseThemeAndKidScreen(
+                    package: state.packages[index],
+                  ),
                 ),
               );
             },

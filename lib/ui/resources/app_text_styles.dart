@@ -32,4 +32,16 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     fontSize: 14,
   );
+  static const s16w600 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 16,
+  );
+  static const s18w600 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 18,
+  );
+  static const s26w600 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 26,
+  );
 }

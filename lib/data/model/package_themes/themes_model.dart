@@ -7,7 +7,7 @@ part 'themes_model.g.dart';
 class ThemesModel with _$ThemesModel {
   @JsonSerializable(explicitToJson: true)
   factory ThemesModel({
-    @JsonKey(name: 'id') required String id,
+    @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'image') String? image,
     @JsonKey(name: 'description') String? description,

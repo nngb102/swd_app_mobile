@@ -1,27 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../data/model/package_themes/themes_model.dart';
+import '../../../../data/model/my_stery_box/mystery_box_model.dart';
 import '../../../resources/app_colors.dart';
 import '../../../widget/app_logo.dart';
 
-class ItemTheme extends StatelessWidget {
-  const ItemTheme({
-    required this.theme,
+class ItemBox extends StatelessWidget {
+  const ItemBox({
+    required this.box,
+    required this.isSelected,
     super.key,
+    this.onTap,
   });
 
-  final ThemesModel theme;
+  final MysteryBoxModel box;
+  final Function()? onTap;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10, right: 50, left: 15),
-      margin: EdgeInsets.only(top: 10, right: 15, left: 15),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      margin: const EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
         border: Border.all(
           width: 3,
-          color: AppColors.primaryButton2,
+          color:
+              isSelected ? AppColors.primaryButton1 : AppColors.primaryButton2,
         ),
         borderRadius: BorderRadius.circular(15),
       ),
@@ -44,8 +49,7 @@ class ItemTheme extends StatelessWidget {
         Radius.circular(15),
       ),
       child: CachedNetworkImage(
-        imageUrl:
-            'https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/02_2020/mua-reu-da-nam-o-8.jpg',
+        imageUrl: box.image ?? '',
         fit: BoxFit.fill,
         imageBuilder: (context, imageProvider) => Container(
           height: 200,
@@ -68,7 +72,7 @@ class ItemTheme extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           alignment: Alignment.center,
-          child: CircularProgressIndicator(),
+          child: const CircularProgressIndicator(),
         ),
         errorWidget: (context, url, error) => Container(
           height: 200,
@@ -81,7 +85,7 @@ class ItemTheme extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           alignment: Alignment.center,
-          child: Icon(
+          child: const Icon(
             Icons.error_outline,
             color: Colors.red,
           ),
@@ -96,35 +100,36 @@ class ItemTheme extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppLogo(),
+          SizedBox(height: 25, child: AppLogo()),
           Text(
-            theme.name ?? '',
+            box.name ?? '',
             softWrap: true,
-            style: TextStyle(
-              fontSize: 20,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            style: const TextStyle(
+              fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           Text(
-            theme.description ?? '',
+            box.description ?? '',
             softWrap: true,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 11,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: onTap,
                 child: Container(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 8,
                     horizontal: 15,
                   ),
@@ -133,10 +138,10 @@ class ItemTheme extends StatelessWidget {
                     color: AppColors.primaryButton2,
                   ),
                   alignment: Alignment.center,
-                  child: Text('Choose Box'),
+                  child: const Text('Choose Box'),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
             ],
           )
         ],

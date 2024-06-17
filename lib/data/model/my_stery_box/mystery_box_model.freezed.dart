@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'themes_model.dart';
+part of 'mystery_box_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,20 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ThemesModel _$ThemesModelFromJson(Map<String, dynamic> json) {
-  return _ThemesModel.fromJson(json);
+MysteryBoxModel _$MysteryBoxModelFromJson(Map<String, dynamic> json) {
+  return _MysteryBoxModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ThemesModel {
+mixin _$MysteryBoxModel {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'image')
   String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'priceAvarage')
+  String? get priceAvarage => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'qrCode')
+  String? get qrCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'quantityProInBox')
+  String? get quantityProInBox => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
   bool? get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'createdAt')
@@ -37,30 +43,33 @@ mixin _$ThemesModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ThemesModelCopyWith<ThemesModel> get copyWith =>
+  $MysteryBoxModelCopyWith<MysteryBoxModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ThemesModelCopyWith<$Res> {
-  factory $ThemesModelCopyWith(
-          ThemesModel value, $Res Function(ThemesModel) then) =
-      _$ThemesModelCopyWithImpl<$Res, ThemesModel>;
+abstract class $MysteryBoxModelCopyWith<$Res> {
+  factory $MysteryBoxModelCopyWith(
+          MysteryBoxModel value, $Res Function(MysteryBoxModel) then) =
+      _$MysteryBoxModelCopyWithImpl<$Res, MysteryBoxModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'image') String? image,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'priceAvarage') String? priceAvarage,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'qrCode') String? qrCode,
+      @JsonKey(name: 'quantityProInBox') String? quantityProInBox,
       @JsonKey(name: 'status') bool? status,
       @JsonKey(name: 'createdAt') String? createdAt,
       @JsonKey(name: 'updatedAt') String? updatedAt});
 }
 
 /// @nodoc
-class _$ThemesModelCopyWithImpl<$Res, $Val extends ThemesModel>
-    implements $ThemesModelCopyWith<$Res> {
-  _$ThemesModelCopyWithImpl(this._value, this._then);
+class _$MysteryBoxModelCopyWithImpl<$Res, $Val extends MysteryBoxModel>
+    implements $MysteryBoxModelCopyWith<$Res> {
+  _$MysteryBoxModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -71,9 +80,12 @@ class _$ThemesModelCopyWithImpl<$Res, $Val extends ThemesModel>
   @override
   $Res call({
     Object? id = null,
-    Object? name = freezed,
     Object? image = freezed,
+    Object? name = freezed,
+    Object? priceAvarage = freezed,
     Object? description = freezed,
+    Object? qrCode = freezed,
+    Object? quantityProInBox = freezed,
     Object? status = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -83,17 +95,29 @@ class _$ThemesModelCopyWithImpl<$Res, $Val extends ThemesModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      priceAvarage: freezed == priceAvarage
+          ? _value.priceAvarage
+          : priceAvarage // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      qrCode: freezed == qrCode
+          ? _value.qrCode
+          : qrCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      quantityProInBox: freezed == quantityProInBox
+          ? _value.quantityProInBox
+          : quantityProInBox // ignore: cast_nullable_to_non_nullable
               as String?,
       status: freezed == status
           ? _value.status
@@ -112,58 +136,76 @@ class _$ThemesModelCopyWithImpl<$Res, $Val extends ThemesModel>
 }
 
 /// @nodoc
-abstract class _$$ThemesModelImplCopyWith<$Res>
-    implements $ThemesModelCopyWith<$Res> {
-  factory _$$ThemesModelImplCopyWith(
-          _$ThemesModelImpl value, $Res Function(_$ThemesModelImpl) then) =
-      __$$ThemesModelImplCopyWithImpl<$Res>;
+abstract class _$$MysteryBoxModelImplCopyWith<$Res>
+    implements $MysteryBoxModelCopyWith<$Res> {
+  factory _$$MysteryBoxModelImplCopyWith(_$MysteryBoxModelImpl value,
+          $Res Function(_$MysteryBoxModelImpl) then) =
+      __$$MysteryBoxModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'image') String? image,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'priceAvarage') String? priceAvarage,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'qrCode') String? qrCode,
+      @JsonKey(name: 'quantityProInBox') String? quantityProInBox,
       @JsonKey(name: 'status') bool? status,
       @JsonKey(name: 'createdAt') String? createdAt,
       @JsonKey(name: 'updatedAt') String? updatedAt});
 }
 
 /// @nodoc
-class __$$ThemesModelImplCopyWithImpl<$Res>
-    extends _$ThemesModelCopyWithImpl<$Res, _$ThemesModelImpl>
-    implements _$$ThemesModelImplCopyWith<$Res> {
-  __$$ThemesModelImplCopyWithImpl(
-      _$ThemesModelImpl _value, $Res Function(_$ThemesModelImpl) _then)
+class __$$MysteryBoxModelImplCopyWithImpl<$Res>
+    extends _$MysteryBoxModelCopyWithImpl<$Res, _$MysteryBoxModelImpl>
+    implements _$$MysteryBoxModelImplCopyWith<$Res> {
+  __$$MysteryBoxModelImplCopyWithImpl(
+      _$MysteryBoxModelImpl _value, $Res Function(_$MysteryBoxModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? name = freezed,
     Object? image = freezed,
+    Object? name = freezed,
+    Object? priceAvarage = freezed,
     Object? description = freezed,
+    Object? qrCode = freezed,
+    Object? quantityProInBox = freezed,
     Object? status = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_$ThemesModelImpl(
+    return _then(_$MysteryBoxModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      priceAvarage: freezed == priceAvarage
+          ? _value.priceAvarage
+          : priceAvarage // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      qrCode: freezed == qrCode
+          ? _value.qrCode
+          : qrCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      quantityProInBox: freezed == quantityProInBox
+          ? _value.quantityProInBox
+          : quantityProInBox // ignore: cast_nullable_to_non_nullable
               as String?,
       status: freezed == status
           ? _value.status
@@ -184,32 +226,44 @@ class __$$ThemesModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ThemesModelImpl extends _ThemesModel {
-  _$ThemesModelImpl(
+class _$MysteryBoxModelImpl extends _MysteryBoxModel {
+  _$MysteryBoxModelImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'image') this.image,
+      @JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'priceAvarage') this.priceAvarage,
       @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'qrCode') this.qrCode,
+      @JsonKey(name: 'quantityProInBox') this.quantityProInBox,
       @JsonKey(name: 'status') this.status,
       @JsonKey(name: 'createdAt') this.createdAt,
       @JsonKey(name: 'updatedAt') this.updatedAt})
       : super._();
 
-  factory _$ThemesModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ThemesModelImplFromJson(json);
+  factory _$MysteryBoxModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MysteryBoxModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
   final int id;
   @override
-  @JsonKey(name: 'name')
-  final String? name;
-  @override
   @JsonKey(name: 'image')
   final String? image;
   @override
+  @JsonKey(name: 'name')
+  final String? name;
+  @override
+  @JsonKey(name: 'priceAvarage')
+  final String? priceAvarage;
+  @override
   @JsonKey(name: 'description')
   final String? description;
+  @override
+  @JsonKey(name: 'qrCode')
+  final String? qrCode;
+  @override
+  @JsonKey(name: 'quantityProInBox')
+  final String? quantityProInBox;
   @override
   @JsonKey(name: 'status')
   final bool? status;
@@ -222,19 +276,24 @@ class _$ThemesModelImpl extends _ThemesModel {
 
   @override
   String toString() {
-    return 'ThemesModel(id: $id, name: $name, image: $image, description: $description, status: $status, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'MysteryBoxModel(id: $id, image: $image, name: $name, priceAvarage: $priceAvarage, description: $description, qrCode: $qrCode, quantityProInBox: $quantityProInBox, status: $status, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ThemesModelImpl &&
+            other is _$MysteryBoxModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.priceAvarage, priceAvarage) ||
+                other.priceAvarage == priceAvarage) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.qrCode, qrCode) || other.qrCode == qrCode) &&
+            (identical(other.quantityProInBox, quantityProInBox) ||
+                other.quantityProInBox == quantityProInBox) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -244,49 +303,63 @@ class _$ThemesModelImpl extends _ThemesModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, image, description, status, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, image, name, priceAvarage,
+      description, qrCode, quantityProInBox, status, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ThemesModelImplCopyWith<_$ThemesModelImpl> get copyWith =>
-      __$$ThemesModelImplCopyWithImpl<_$ThemesModelImpl>(this, _$identity);
+  _$$MysteryBoxModelImplCopyWith<_$MysteryBoxModelImpl> get copyWith =>
+      __$$MysteryBoxModelImplCopyWithImpl<_$MysteryBoxModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ThemesModelImplToJson(
+    return _$$MysteryBoxModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _ThemesModel extends ThemesModel {
-  factory _ThemesModel(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'name') final String? name,
-      @JsonKey(name: 'image') final String? image,
-      @JsonKey(name: 'description') final String? description,
-      @JsonKey(name: 'status') final bool? status,
-      @JsonKey(name: 'createdAt') final String? createdAt,
-      @JsonKey(name: 'updatedAt') final String? updatedAt}) = _$ThemesModelImpl;
-  _ThemesModel._() : super._();
+abstract class _MysteryBoxModel extends MysteryBoxModel {
+  factory _MysteryBoxModel(
+          {@JsonKey(name: 'id') required final int id,
+          @JsonKey(name: 'image') final String? image,
+          @JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'priceAvarage') final String? priceAvarage,
+          @JsonKey(name: 'description') final String? description,
+          @JsonKey(name: 'qrCode') final String? qrCode,
+          @JsonKey(name: 'quantityProInBox') final String? quantityProInBox,
+          @JsonKey(name: 'status') final bool? status,
+          @JsonKey(name: 'createdAt') final String? createdAt,
+          @JsonKey(name: 'updatedAt') final String? updatedAt}) =
+      _$MysteryBoxModelImpl;
+  _MysteryBoxModel._() : super._();
 
-  factory _ThemesModel.fromJson(Map<String, dynamic> json) =
-      _$ThemesModelImpl.fromJson;
+  factory _MysteryBoxModel.fromJson(Map<String, dynamic> json) =
+      _$MysteryBoxModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
   int get id;
   @override
-  @JsonKey(name: 'name')
-  String? get name;
-  @override
   @JsonKey(name: 'image')
   String? get image;
   @override
+  @JsonKey(name: 'name')
+  String? get name;
+  @override
+  @JsonKey(name: 'priceAvarage')
+  String? get priceAvarage;
+  @override
   @JsonKey(name: 'description')
   String? get description;
+  @override
+  @JsonKey(name: 'qrCode')
+  String? get qrCode;
+  @override
+  @JsonKey(name: 'quantityProInBox')
+  String? get quantityProInBox;
   @override
   @JsonKey(name: 'status')
   bool? get status;
@@ -298,6 +371,6 @@ abstract class _ThemesModel extends ThemesModel {
   String? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$ThemesModelImplCopyWith<_$ThemesModelImpl> get copyWith =>
+  _$$MysteryBoxModelImplCopyWith<_$MysteryBoxModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

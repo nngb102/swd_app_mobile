@@ -34,7 +34,6 @@ class _PrimaryState extends State<Primary> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: Container(
-        height: 80,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30), color: Colors.amber),
         child: BottomNavigationBar(

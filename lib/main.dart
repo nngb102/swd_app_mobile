@@ -42,6 +42,6 @@ class MyApp extends StatelessWidget {
         builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: Home());
+        home: SignIn());
   }
 }

@@ -1,6 +1,7 @@
 import '../ui/bloc/ui_module.dart';
 
 import '../ui/feature/choose_box/bloc/choose_box_module.dart';
+import '../ui/feature/choose_theme_and_kid/bloc/choose_theme_and_kid_module.dart';
 import '../ui/feature/home/bloc/home_module.dart';
 
 import '../ui/feature/sign_in/bloc/sign_in_module.dart';
@@ -47,17 +48,10 @@ class DependencyManager {
     // SignUp
     await SignUpModule.inject();
 
-    // Theme Box
+    // Choose Theme AndKid
+    await ChooseThemeAndKidModule.inject();
+
+    // Choose Box
     await ChooseBoxModule.inject();
-
-    // //add device
-    // await ConfigWifiModule.inject();
-    // await HandleConnectModule.inject();
-
-    // //create_routines
-    // await CreateRoutinesModule.inject();
-
-    // //edit profile
-    // await EditProfileModule.inject();
   }
 }
