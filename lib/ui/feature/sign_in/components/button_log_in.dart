@@ -24,13 +24,13 @@ class ButtonLogin extends StatelessWidget {
       bloc: signInPresenter,
       builder: (context, state) => GestureDetector(
         onTap: () async {
-          await EasyLoading.show(
-              maskType: EasyLoadingMaskType.black, dismissOnTap: false);
-
           /// Nếu email hoặc password rỗng thì hiển thị thông báo
           if (state.userName.isEmpty || state.password.isEmpty) {
             return showToast('vui lòng nhập email và mật khẩu của bạn');
           } else {
+            await EasyLoading.show(
+                maskType: EasyLoadingMaskType.black, dismissOnTap: false);
+
             await signInPresenter.onTapSignIn(
               onErrorCallBack: (error) async {
                 await EasyLoading.dismiss();
@@ -43,20 +43,16 @@ class ButtonLogin extends StatelessWidget {
                 );
               },
             );
-           
-         
-             
 
-              await EasyLoading.dismiss();
+            await EasyLoading.dismiss();
 
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Primary(),
-                ),
-              );
-            }
-          
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Primary(),
+              ),
+            );
+          }
         },
         child: Container(
           height: 50,
