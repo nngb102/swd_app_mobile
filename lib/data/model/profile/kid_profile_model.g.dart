@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'kid_profile_by_user_id_model.dart';
+part of 'kid_profile_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KidProfileByUserIdModelImpl _$$KidProfileByUserIdModelImplFromJson(
+_$KidProfileModelImpl _$$KidProfileModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$KidProfileByUserIdModelImpl(
+    _$KidProfileModelImpl(
       id: (json['id'] as num).toInt(),
       themeId: (json['themeId'] as num?)?.toInt(),
       userId: (json['userId'] as num?)?.toInt(),
@@ -25,8 +25,8 @@ _$KidProfileByUserIdModelImpl _$$KidProfileByUserIdModelImplFromJson(
       updatedAt: json['updatedAt'] as String?,
     );
 
-Map<String, dynamic> _$$KidProfileByUserIdModelImplToJson(
-        _$KidProfileByUserIdModelImpl instance) =>
+Map<String, dynamic> _$$KidProfileModelImplToJson(
+        _$KidProfileModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'themeId': instance.themeId,

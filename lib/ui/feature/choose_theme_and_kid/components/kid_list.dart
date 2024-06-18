@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/model/profile/kid_profile_by_user_id_model.dart';
+import '../../../../data/model/profile/kid_profile_model.dart';
 
 import 'item_kid.dart';
 
@@ -12,9 +12,9 @@ class KidList extends StatelessWidget {
     this.onTap,
   });
 
-  final List<KidProfileByUserIdModel> kids;
-  final KidProfileByUserIdModel? kidSelected;
-  final Function(KidProfileByUserIdModel)? onTap;
+  final List<KidProfileModel> kids;
+  final KidProfileModel? kidSelected;
+  final Function(KidProfileModel)? onTap;
 
   @override
   Widget build(BuildContext context) {

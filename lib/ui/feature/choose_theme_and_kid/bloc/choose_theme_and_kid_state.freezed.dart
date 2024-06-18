@@ -17,11 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChooseThemeAndKidState {
   List<ThemesModel> get themes => throw _privateConstructorUsedError;
-  List<KidProfileByUserIdModel> get kidProfileByUserIdModel =>
+  List<KidProfileModel> get kidProfileByUserIdModel =>
       throw _privateConstructorUsedError;
   ThemesModel? get themeSelected => throw _privateConstructorUsedError;
-  KidProfileByUserIdModel? get kidSelected =>
-      throw _privateConstructorUsedError;
+  KidProfileModel? get kidSelected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChooseThemeAndKidStateCopyWith<ChooseThemeAndKidState> get copyWith =>
@@ -36,12 +35,12 @@ abstract class $ChooseThemeAndKidStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<ThemesModel> themes,
-      List<KidProfileByUserIdModel> kidProfileByUserIdModel,
+      List<KidProfileModel> kidProfileByUserIdModel,
       ThemesModel? themeSelected,
-      KidProfileByUserIdModel? kidSelected});
+      KidProfileModel? kidSelected});
 
   $ThemesModelCopyWith<$Res>? get themeSelected;
-  $KidProfileByUserIdModelCopyWith<$Res>? get kidSelected;
+  $KidProfileModelCopyWith<$Res>? get kidSelected;
 }
 
 /// @nodoc
@@ -71,7 +70,7 @@ class _$ChooseThemeAndKidStateCopyWithImpl<$Res,
       kidProfileByUserIdModel: null == kidProfileByUserIdModel
           ? _value.kidProfileByUserIdModel
           : kidProfileByUserIdModel // ignore: cast_nullable_to_non_nullable
-              as List<KidProfileByUserIdModel>,
+              as List<KidProfileModel>,
       themeSelected: freezed == themeSelected
           ? _value.themeSelected
           : themeSelected // ignore: cast_nullable_to_non_nullable
@@ -79,7 +78,7 @@ class _$ChooseThemeAndKidStateCopyWithImpl<$Res,
       kidSelected: freezed == kidSelected
           ? _value.kidSelected
           : kidSelected // ignore: cast_nullable_to_non_nullable
-              as KidProfileByUserIdModel?,
+              as KidProfileModel?,
     ) as $Val);
   }
 
@@ -97,12 +96,12 @@ class _$ChooseThemeAndKidStateCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $KidProfileByUserIdModelCopyWith<$Res>? get kidSelected {
+  $KidProfileModelCopyWith<$Res>? get kidSelected {
     if (_value.kidSelected == null) {
       return null;
     }
 
-    return $KidProfileByUserIdModelCopyWith<$Res>(_value.kidSelected!, (value) {
+    return $KidProfileModelCopyWith<$Res>(_value.kidSelected!, (value) {
       return _then(_value.copyWith(kidSelected: value) as $Val);
     });
   }
@@ -119,14 +118,14 @@ abstract class _$$ChooseThemeAndKidStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<ThemesModel> themes,
-      List<KidProfileByUserIdModel> kidProfileByUserIdModel,
+      List<KidProfileModel> kidProfileByUserIdModel,
       ThemesModel? themeSelected,
-      KidProfileByUserIdModel? kidSelected});
+      KidProfileModel? kidSelected});
 
   @override
   $ThemesModelCopyWith<$Res>? get themeSelected;
   @override
-  $KidProfileByUserIdModelCopyWith<$Res>? get kidSelected;
+  $KidProfileModelCopyWith<$Res>? get kidSelected;
 }
 
 /// @nodoc
@@ -155,7 +154,7 @@ class __$$ChooseThemeAndKidStateImplCopyWithImpl<$Res>
       kidProfileByUserIdModel: null == kidProfileByUserIdModel
           ? _value._kidProfileByUserIdModel
           : kidProfileByUserIdModel // ignore: cast_nullable_to_non_nullable
-              as List<KidProfileByUserIdModel>,
+              as List<KidProfileModel>,
       themeSelected: freezed == themeSelected
           ? _value.themeSelected
           : themeSelected // ignore: cast_nullable_to_non_nullable
@@ -163,7 +162,7 @@ class __$$ChooseThemeAndKidStateImplCopyWithImpl<$Res>
       kidSelected: freezed == kidSelected
           ? _value.kidSelected
           : kidSelected // ignore: cast_nullable_to_non_nullable
-              as KidProfileByUserIdModel?,
+              as KidProfileModel?,
     ));
   }
 }
@@ -173,7 +172,7 @@ class __$$ChooseThemeAndKidStateImplCopyWithImpl<$Res>
 class _$ChooseThemeAndKidStateImpl extends _ChooseThemeAndKidState {
   _$ChooseThemeAndKidStateImpl(
       {required final List<ThemesModel> themes,
-      required final List<KidProfileByUserIdModel> kidProfileByUserIdModel,
+      required final List<KidProfileModel> kidProfileByUserIdModel,
       this.themeSelected,
       this.kidSelected})
       : _themes = themes,
@@ -188,9 +187,9 @@ class _$ChooseThemeAndKidStateImpl extends _ChooseThemeAndKidState {
     return EqualUnmodifiableListView(_themes);
   }
 
-  final List<KidProfileByUserIdModel> _kidProfileByUserIdModel;
+  final List<KidProfileModel> _kidProfileByUserIdModel;
   @override
-  List<KidProfileByUserIdModel> get kidProfileByUserIdModel {
+  List<KidProfileModel> get kidProfileByUserIdModel {
     if (_kidProfileByUserIdModel is EqualUnmodifiableListView)
       return _kidProfileByUserIdModel;
     // ignore: implicit_dynamic_type
@@ -200,7 +199,7 @@ class _$ChooseThemeAndKidStateImpl extends _ChooseThemeAndKidState {
   @override
   final ThemesModel? themeSelected;
   @override
-  final KidProfileByUserIdModel? kidSelected;
+  final KidProfileModel? kidSelected;
 
   @override
   String toString() {
@@ -239,21 +238,20 @@ class _$ChooseThemeAndKidStateImpl extends _ChooseThemeAndKidState {
 
 abstract class _ChooseThemeAndKidState extends ChooseThemeAndKidState {
   factory _ChooseThemeAndKidState(
-          {required final List<ThemesModel> themes,
-          required final List<KidProfileByUserIdModel> kidProfileByUserIdModel,
-          final ThemesModel? themeSelected,
-          final KidProfileByUserIdModel? kidSelected}) =
-      _$ChooseThemeAndKidStateImpl;
+      {required final List<ThemesModel> themes,
+      required final List<KidProfileModel> kidProfileByUserIdModel,
+      final ThemesModel? themeSelected,
+      final KidProfileModel? kidSelected}) = _$ChooseThemeAndKidStateImpl;
   _ChooseThemeAndKidState._() : super._();
 
   @override
   List<ThemesModel> get themes;
   @override
-  List<KidProfileByUserIdModel> get kidProfileByUserIdModel;
+  List<KidProfileModel> get kidProfileByUserIdModel;
   @override
   ThemesModel? get themeSelected;
   @override
-  KidProfileByUserIdModel? get kidSelected;
+  KidProfileModel? get kidSelected;
   @override
   @JsonKey(ignore: true)
   _$$ChooseThemeAndKidStateImplCopyWith<_$ChooseThemeAndKidStateImpl>

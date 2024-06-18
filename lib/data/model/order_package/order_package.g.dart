@@ -7,7 +7,7 @@ part of 'order_package.dart';
 // **************************************************************************
 
 OrderPackage _$OrderPackageFromJson(Map<String, dynamic> json) => OrderPackage(
-      kidId: (json['kidId'] as num).toInt(),
+      kidId: json['kidId'] as String,
       totalPrice: json['totalPrice'] as String,
       nameOfAdult: json['nameOfAdult'] as String,
       nameOfKid: json['nameOfKid'] as String,

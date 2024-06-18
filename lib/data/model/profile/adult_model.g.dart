@@ -1,31 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_response.dart';
+part of 'adult_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserResponseImpl _$$UserResponseImplFromJson(Map<String, dynamic> json) =>
-    _$UserResponseImpl(
+_$AdultModelImpl _$$AdultModelImplFromJson(Map<String, dynamic> json) =>
+    _$AdultModelImpl(
       id: (json['id'] as num).toInt(),
-      username: json['username'] as String?,
-      password: json['password'] as String?,
-      fullName: json['fullName'] as String?,
+      username: (json['username'] as num?)?.toInt(),
+      fullName: (json['fullName'] as num?)?.toInt(),
       email: json['email'] as String?,
       phone: json['phone'] as String?,
       address: json['address'] as String?,
-      status: json['status'] as bool?,
     );
 
-Map<String, dynamic> _$$UserResponseImplToJson(_$UserResponseImpl instance) =>
+Map<String, dynamic> _$$AdultModelImplToJson(_$AdultModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'username': instance.username,
-      'password': instance.password,
       'fullName': instance.fullName,
       'email': instance.email,
       'phone': instance.phone,
       'address': instance.address,
-      'status': instance.status,
     };

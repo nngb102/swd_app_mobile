@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'kid_profile_by_user_id_model.dart';
+part of 'kid_profile_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,13 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-KidProfileByUserIdModel _$KidProfileByUserIdModelFromJson(
-    Map<String, dynamic> json) {
-  return _KidProfileByUserIdModel.fromJson(json);
+KidProfileModel _$KidProfileModelFromJson(Map<String, dynamic> json) {
+  return _KidProfileModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$KidProfileByUserIdModel {
+mixin _$KidProfileModel {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'themeId')
@@ -52,15 +51,15 @@ mixin _$KidProfileByUserIdModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $KidProfileByUserIdModelCopyWith<KidProfileByUserIdModel> get copyWith =>
+  $KidProfileModelCopyWith<KidProfileModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $KidProfileByUserIdModelCopyWith<$Res> {
-  factory $KidProfileByUserIdModelCopyWith(KidProfileByUserIdModel value,
-          $Res Function(KidProfileByUserIdModel) then) =
-      _$KidProfileByUserIdModelCopyWithImpl<$Res, KidProfileByUserIdModel>;
+abstract class $KidProfileModelCopyWith<$Res> {
+  factory $KidProfileModelCopyWith(
+          KidProfileModel value, $Res Function(KidProfileModel) then) =
+      _$KidProfileModelCopyWithImpl<$Res, KidProfileModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int id,
@@ -80,10 +79,9 @@ abstract class $KidProfileByUserIdModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$KidProfileByUserIdModelCopyWithImpl<$Res,
-        $Val extends KidProfileByUserIdModel>
-    implements $KidProfileByUserIdModelCopyWith<$Res> {
-  _$KidProfileByUserIdModelCopyWithImpl(this._value, this._then);
+class _$KidProfileModelCopyWithImpl<$Res, $Val extends KidProfileModel>
+    implements $KidProfileModelCopyWith<$Res> {
+  _$KidProfileModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -170,12 +168,11 @@ class _$KidProfileByUserIdModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$KidProfileByUserIdModelImplCopyWith<$Res>
-    implements $KidProfileByUserIdModelCopyWith<$Res> {
-  factory _$$KidProfileByUserIdModelImplCopyWith(
-          _$KidProfileByUserIdModelImpl value,
-          $Res Function(_$KidProfileByUserIdModelImpl) then) =
-      __$$KidProfileByUserIdModelImplCopyWithImpl<$Res>;
+abstract class _$$KidProfileModelImplCopyWith<$Res>
+    implements $KidProfileModelCopyWith<$Res> {
+  factory _$$KidProfileModelImplCopyWith(_$KidProfileModelImpl value,
+          $Res Function(_$KidProfileModelImpl) then) =
+      __$$KidProfileModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -196,13 +193,11 @@ abstract class _$$KidProfileByUserIdModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$KidProfileByUserIdModelImplCopyWithImpl<$Res>
-    extends _$KidProfileByUserIdModelCopyWithImpl<$Res,
-        _$KidProfileByUserIdModelImpl>
-    implements _$$KidProfileByUserIdModelImplCopyWith<$Res> {
-  __$$KidProfileByUserIdModelImplCopyWithImpl(
-      _$KidProfileByUserIdModelImpl _value,
-      $Res Function(_$KidProfileByUserIdModelImpl) _then)
+class __$$KidProfileModelImplCopyWithImpl<$Res>
+    extends _$KidProfileModelCopyWithImpl<$Res, _$KidProfileModelImpl>
+    implements _$$KidProfileModelImplCopyWith<$Res> {
+  __$$KidProfileModelImplCopyWithImpl(
+      _$KidProfileModelImpl _value, $Res Function(_$KidProfileModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -223,7 +218,7 @@ class __$$KidProfileByUserIdModelImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_$KidProfileByUserIdModelImpl(
+    return _then(_$KidProfileModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -287,8 +282,8 @@ class __$$KidProfileByUserIdModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$KidProfileByUserIdModelImpl extends _KidProfileByUserIdModel {
-  _$KidProfileByUserIdModelImpl(
+class _$KidProfileModelImpl extends _KidProfileModel {
+  _$KidProfileModelImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'themeId') this.themeId,
       @JsonKey(name: 'userId') this.userId,
@@ -305,8 +300,8 @@ class _$KidProfileByUserIdModelImpl extends _KidProfileByUserIdModel {
       @JsonKey(name: 'updatedAt') this.updatedAt})
       : super._();
 
-  factory _$KidProfileByUserIdModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KidProfileByUserIdModelImplFromJson(json);
+  factory _$KidProfileModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KidProfileModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -353,14 +348,14 @@ class _$KidProfileByUserIdModelImpl extends _KidProfileByUserIdModel {
 
   @override
   String toString() {
-    return 'KidProfileByUserIdModel(id: $id, themeId: $themeId, userId: $userId, fullName: $fullName, descriptionHobby: $descriptionHobby, yob: $yob, gender: $gender, color: $color, type: $type, material: $material, typeOrigin: $typeOrigin, status: $status, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'KidProfileModel(id: $id, themeId: $themeId, userId: $userId, fullName: $fullName, descriptionHobby: $descriptionHobby, yob: $yob, gender: $gender, color: $color, type: $type, material: $material, typeOrigin: $typeOrigin, status: $status, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KidProfileByUserIdModelImpl &&
+            other is _$KidProfileModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.themeId, themeId) || other.themeId == themeId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
@@ -405,20 +400,20 @@ class _$KidProfileByUserIdModelImpl extends _KidProfileByUserIdModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KidProfileByUserIdModelImplCopyWith<_$KidProfileByUserIdModelImpl>
-      get copyWith => __$$KidProfileByUserIdModelImplCopyWithImpl<
-          _$KidProfileByUserIdModelImpl>(this, _$identity);
+  _$$KidProfileModelImplCopyWith<_$KidProfileModelImpl> get copyWith =>
+      __$$KidProfileModelImplCopyWithImpl<_$KidProfileModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KidProfileByUserIdModelImplToJson(
+    return _$$KidProfileModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _KidProfileByUserIdModel extends KidProfileByUserIdModel {
-  factory _KidProfileByUserIdModel(
+abstract class _KidProfileModel extends KidProfileModel {
+  factory _KidProfileModel(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'themeId') final int? themeId,
           @JsonKey(name: 'userId') final int? userId,
@@ -433,11 +428,11 @@ abstract class _KidProfileByUserIdModel extends KidProfileByUserIdModel {
           @JsonKey(name: 'status') final bool? status,
           @JsonKey(name: 'createdAt') final String? createdAt,
           @JsonKey(name: 'updatedAt') final String? updatedAt}) =
-      _$KidProfileByUserIdModelImpl;
-  _KidProfileByUserIdModel._() : super._();
+      _$KidProfileModelImpl;
+  _KidProfileModel._() : super._();
 
-  factory _KidProfileByUserIdModel.fromJson(Map<String, dynamic> json) =
-      _$KidProfileByUserIdModelImpl.fromJson;
+  factory _KidProfileModel.fromJson(Map<String, dynamic> json) =
+      _$KidProfileModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -483,6 +478,6 @@ abstract class _KidProfileByUserIdModel extends KidProfileByUserIdModel {
   String? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$KidProfileByUserIdModelImplCopyWith<_$KidProfileByUserIdModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$KidProfileModelImplCopyWith<_$KidProfileModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

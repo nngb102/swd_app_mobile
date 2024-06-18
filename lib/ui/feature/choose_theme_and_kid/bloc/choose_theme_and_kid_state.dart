@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../data/model/package_themes/themes_model.dart';
-import '../../../../data/model/profile/kid_profile_by_user_id_model.dart';
+import '../../../../data/model/profile/kid_profile_model.dart';
 
 part 'choose_theme_and_kid_state.freezed.dart';
 
@@ -11,9 +11,9 @@ enum Status { init, inProgress, success }
 class ChooseThemeAndKidState with _$ChooseThemeAndKidState {
   factory ChooseThemeAndKidState({
     required List<ThemesModel> themes,
-    required List<KidProfileByUserIdModel> kidProfileByUserIdModel,
+    required List<KidProfileModel> kidProfileByUserIdModel,
     ThemesModel? themeSelected,
-    KidProfileByUserIdModel? kidSelected,
+    KidProfileModel? kidSelected,
   }) = _ChooseThemeAndKidState;
 
   const ChooseThemeAndKidState._();

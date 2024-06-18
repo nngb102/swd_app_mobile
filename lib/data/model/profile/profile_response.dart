@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'kid_profile_by_user_id_model.dart';
+import 'adult_model.dart';
+import 'kid_profile_model.dart';
 
 part 'profile_response.freezed.dart';
 part 'profile_response.g.dart';
@@ -11,8 +12,8 @@ class ProfileResponse with _$ProfileResponse {
   factory ProfileResponse({
     @JsonKey(name: 'success') required bool success,
     @JsonKey(name: 'message') required String message,
-    @JsonKey(name: 'kidProfilesByUserId')
-    required List<KidProfileByUserIdModel> kidProfilesByUserId,
+    @JsonKey(name: 'kidProfiles') List<KidProfileModel>? kidProfiles,
+    @JsonKey(name: 'adult') List<AdultModel>? adult,
   }) = _ProfileResponse;
 
   factory ProfileResponse.fromJson(Map<String, dynamic> json) =>
@@ -23,6 +24,7 @@ class ProfileResponse with _$ProfileResponse {
   factory ProfileResponse.initial() => ProfileResponse(
         success: true,
         message: '',
-        kidProfilesByUserId: [],
+        kidProfiles: [],
+        adult: [],
       );
 }

@@ -17,7 +17,6 @@ import 'ui/feature/primary/primary.dart';
 import 'ui/feature/sign_in/sign_in.dart';
 import 'ui/feature/sign_up/sign_up_screen.dart';
 import 'utilities/helpers/app_helper/app_flavor_helper.dart';
-// import 'ui/feature/cart/cart.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

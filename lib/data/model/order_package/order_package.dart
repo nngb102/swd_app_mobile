@@ -20,7 +20,7 @@ class OrderPackage {
   Map<String, dynamic> toJson() => _$OrderPackageToJson(this);
 
   @JsonKey(name: 'kidId')
-  final int kidId;
+  final String kidId;
 
   @JsonKey(name: 'totalPrice')
   final String totalPrice;

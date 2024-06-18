@@ -11,8 +11,8 @@ class AuthLogin with _$AuthLogin {
   factory AuthLogin({
     @JsonKey(name: 'success') required bool success,
     @JsonKey(name: 'message') required String message,
-    @JsonKey(name: 'accessToken') required String accessToken,
-    @JsonKey(name: 'user') required UserResponse user,
+    @JsonKey(name: 'accessToken') String? accessToken,
+    @JsonKey(name: 'user') UserResponse? user,
   }) = _AuthLogin;
 
   factory AuthLogin.fromJson(Map<String, dynamic> json) =>

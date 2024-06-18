@@ -39,18 +39,24 @@ class SignInPresenter extends Cubit<SignInState> {
       (value) => value.when(
         success: (data) async {
           final token = data.accessToken;
-          await saveUser(data.user);
-          emit(state.copyWith(
-            token: token,
-          ));
+          print(token);
+          if (token != null) {
+            await saveUser(data.user);
+            addToken(token);
+            emit(state.copyWith(
+              token: token,
+            ));
+          } else {
+            onErrorCallBack?.call(CustomException(Exception(data.message)));
+          }
         },
         failure: (error) => onErrorCallBack?.call(error),
       ),
     );
   }
 
-  void addToken() {
-    uiPresenter.addToken(state.token);
+  void addToken(String token) {
+    uiPresenter.addToken(token);
   }
 
   Future<void> saveUser(UserResponse? user) async {

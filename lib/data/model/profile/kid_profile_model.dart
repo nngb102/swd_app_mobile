@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'kid_profile_by_user_id_model.freezed.dart';
-part 'kid_profile_by_user_id_model.g.dart';
+part 'kid_profile_model.freezed.dart';
+part 'kid_profile_model.g.dart';
 
 @freezed
-class KidProfileByUserIdModel with _$KidProfileByUserIdModel {
+class KidProfileModel with _$KidProfileModel {
   @JsonSerializable(explicitToJson: true)
-  factory KidProfileByUserIdModel({
+  factory KidProfileModel({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'themeId') int? themeId,
     @JsonKey(name: 'userId') int? userId,
@@ -21,10 +21,10 @@ class KidProfileByUserIdModel with _$KidProfileByUserIdModel {
     @JsonKey(name: 'status') bool? status,
     @JsonKey(name: 'createdAt') String? createdAt,
     @JsonKey(name: 'updatedAt') String? updatedAt,
-  }) = _KidProfileByUserIdModel;
+  }) = _KidProfileModel;
 
-  factory KidProfileByUserIdModel.fromJson(Map<String, dynamic> json) =>
-      _$KidProfileByUserIdModelFromJson(json);
+  factory KidProfileModel.fromJson(Map<String, dynamic> json) =>
+      _$KidProfileModelFromJson(json);
 
-  const KidProfileByUserIdModel._();
+  const KidProfileModel._();
 }

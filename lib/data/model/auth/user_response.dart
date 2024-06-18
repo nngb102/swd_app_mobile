@@ -8,13 +8,13 @@ class UserResponse with _$UserResponse {
   @JsonSerializable(explicitToJson: true)
   factory UserResponse({
     @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'username') required String username,
-    @JsonKey(name: 'password') required String password,
-    @JsonKey(name: 'fullName') required String fullName,
-    @JsonKey(name: 'email') required String email,
-    @JsonKey(name: 'phone') required String phone,
-    @JsonKey(name: 'address') required String address,
-    @JsonKey(name: 'status') required bool status,
+    @JsonKey(name: 'username')  String? username,
+    @JsonKey(name: 'password')  String? password,
+    @JsonKey(name: 'fullName')  String? fullName,
+    @JsonKey(name: 'email')  String? email,
+    @JsonKey(name: 'phone')  String? phone,
+    @JsonKey(name: 'address')  String? address,
+    @JsonKey(name: 'status')  bool? status,
   }) = _UserResponse;
 
   factory UserResponse.fromJson(Map<String, dynamic> json) =>

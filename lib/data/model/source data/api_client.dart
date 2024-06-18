@@ -6,6 +6,7 @@ import '../auth/auth_login.dart';
 import '../home/package_response.dart';
 import '../my_stery_box/mystery_box_response.dart';
 import '../order_package/order_package.dart';
+import '../order_package/order_response.dart';
 import '../package_themes/theme_response.dart';
 import '../profile/profile_response.dart';
 import '../profile/theme_id_model.dart';
@@ -64,9 +65,9 @@ abstract class ApiClient {
   );
 
   @POST(ApiConstants.addOrderPackage)
-  Future<void> addOrderPackage(
-    @Path('packageId') int packageId,
-    // @Body() OrderPackage orderPackage,
+  Future<OrderResponse> addOrderPackage(
+    // @Path('packageId') String packageId,
+    @Body() OrderPackage orderPackage,
   );
 
   @PUT(ApiConstants.updateProfile)

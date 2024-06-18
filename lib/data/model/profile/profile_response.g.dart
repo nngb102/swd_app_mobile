@@ -11,9 +11,11 @@ _$ProfileResponseImpl _$$ProfileResponseImplFromJson(
     _$ProfileResponseImpl(
       success: json['success'] as bool,
       message: json['message'] as String,
-      kidProfilesByUserId: (json['kidProfilesByUserId'] as List<dynamic>)
-          .map((e) =>
-              KidProfileByUserIdModel.fromJson(e as Map<String, dynamic>))
+      kidProfiles: (json['kidProfiles'] as List<dynamic>?)
+          ?.map((e) => KidProfileModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      adult: (json['adult'] as List<dynamic>?)
+          ?.map((e) => AdultModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -22,6 +24,6 @@ Map<String, dynamic> _$$ProfileResponseImplToJson(
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,
-      'kidProfilesByUserId':
-          instance.kidProfilesByUserId.map((e) => e.toJson()).toList(),
+      'kidProfiles': instance.kidProfiles?.map((e) => e.toJson()).toList(),
+      'adult': instance.adult?.map((e) => e.toJson()).toList(),
     };

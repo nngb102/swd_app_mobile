@@ -44,7 +44,7 @@ class ChooseBoxPresenter extends Cubit<ChooseBoxState> {
       Function(CustomException error)? onErrorCallBack}) async {
     final user = injector.get<UiPresenter>().state.user;
     final orderPackage = OrderPackage(
-      kidId: kidId,
+      kidId: kidId.toString(),
       totalPrice: state.boxSelected?.priceAvarage ?? '500000',
       nameOfAdult: user?.fullName ?? '',
       nameOfKid: nameOfKid,
@@ -54,8 +54,8 @@ class ChooseBoxPresenter extends Cubit<ChooseBoxState> {
       status: true,
     );
     await Result.guardFuture(() async => apiClient.addOrderPackage(
-          packageId,
-          // orderPackage,
+          // packageId,
+          orderPackage,
         )).then(
       (value) => value.when(
         success: (data) {

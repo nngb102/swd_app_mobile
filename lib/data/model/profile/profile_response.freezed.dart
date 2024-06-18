@@ -24,9 +24,10 @@ mixin _$ProfileResponse {
   bool get success => throw _privateConstructorUsedError;
   @JsonKey(name: 'message')
   String get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'kidProfilesByUserId')
-  List<KidProfileByUserIdModel> get kidProfilesByUserId =>
-      throw _privateConstructorUsedError;
+  @JsonKey(name: 'kidProfiles')
+  List<KidProfileModel>? get kidProfiles => throw _privateConstructorUsedError;
+  @JsonKey(name: 'adult')
+  List<AdultModel>? get adult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,8 +44,8 @@ abstract class $ProfileResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'success') bool success,
       @JsonKey(name: 'message') String message,
-      @JsonKey(name: 'kidProfilesByUserId')
-      List<KidProfileByUserIdModel> kidProfilesByUserId});
+      @JsonKey(name: 'kidProfiles') List<KidProfileModel>? kidProfiles,
+      @JsonKey(name: 'adult') List<AdultModel>? adult});
 }
 
 /// @nodoc
@@ -62,7 +63,8 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
   $Res call({
     Object? success = null,
     Object? message = null,
-    Object? kidProfilesByUserId = null,
+    Object? kidProfiles = freezed,
+    Object? adult = freezed,
   }) {
     return _then(_value.copyWith(
       success: null == success
@@ -73,10 +75,14 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      kidProfilesByUserId: null == kidProfilesByUserId
-          ? _value.kidProfilesByUserId
-          : kidProfilesByUserId // ignore: cast_nullable_to_non_nullable
-              as List<KidProfileByUserIdModel>,
+      kidProfiles: freezed == kidProfiles
+          ? _value.kidProfiles
+          : kidProfiles // ignore: cast_nullable_to_non_nullable
+              as List<KidProfileModel>?,
+      adult: freezed == adult
+          ? _value.adult
+          : adult // ignore: cast_nullable_to_non_nullable
+              as List<AdultModel>?,
     ) as $Val);
   }
 }
@@ -92,8 +98,8 @@ abstract class _$$ProfileResponseImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'success') bool success,
       @JsonKey(name: 'message') String message,
-      @JsonKey(name: 'kidProfilesByUserId')
-      List<KidProfileByUserIdModel> kidProfilesByUserId});
+      @JsonKey(name: 'kidProfiles') List<KidProfileModel>? kidProfiles,
+      @JsonKey(name: 'adult') List<AdultModel>? adult});
 }
 
 /// @nodoc
@@ -109,7 +115,8 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? success = null,
     Object? message = null,
-    Object? kidProfilesByUserId = null,
+    Object? kidProfiles = freezed,
+    Object? adult = freezed,
   }) {
     return _then(_$ProfileResponseImpl(
       success: null == success
@@ -120,10 +127,14 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      kidProfilesByUserId: null == kidProfilesByUserId
-          ? _value._kidProfilesByUserId
-          : kidProfilesByUserId // ignore: cast_nullable_to_non_nullable
-              as List<KidProfileByUserIdModel>,
+      kidProfiles: freezed == kidProfiles
+          ? _value._kidProfiles
+          : kidProfiles // ignore: cast_nullable_to_non_nullable
+              as List<KidProfileModel>?,
+      adult: freezed == adult
+          ? _value._adult
+          : adult // ignore: cast_nullable_to_non_nullable
+              as List<AdultModel>?,
     ));
   }
 }
@@ -135,9 +146,10 @@ class _$ProfileResponseImpl extends _ProfileResponse {
   _$ProfileResponseImpl(
       {@JsonKey(name: 'success') required this.success,
       @JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'kidProfilesByUserId')
-      required final List<KidProfileByUserIdModel> kidProfilesByUserId})
-      : _kidProfilesByUserId = kidProfilesByUserId,
+      @JsonKey(name: 'kidProfiles') final List<KidProfileModel>? kidProfiles,
+      @JsonKey(name: 'adult') final List<AdultModel>? adult})
+      : _kidProfiles = kidProfiles,
+        _adult = adult,
         super._();
 
   factory _$ProfileResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -149,19 +161,31 @@ class _$ProfileResponseImpl extends _ProfileResponse {
   @override
   @JsonKey(name: 'message')
   final String message;
-  final List<KidProfileByUserIdModel> _kidProfilesByUserId;
+  final List<KidProfileModel>? _kidProfiles;
   @override
-  @JsonKey(name: 'kidProfilesByUserId')
-  List<KidProfileByUserIdModel> get kidProfilesByUserId {
-    if (_kidProfilesByUserId is EqualUnmodifiableListView)
-      return _kidProfilesByUserId;
+  @JsonKey(name: 'kidProfiles')
+  List<KidProfileModel>? get kidProfiles {
+    final value = _kidProfiles;
+    if (value == null) return null;
+    if (_kidProfiles is EqualUnmodifiableListView) return _kidProfiles;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_kidProfilesByUserId);
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<AdultModel>? _adult;
+  @override
+  @JsonKey(name: 'adult')
+  List<AdultModel>? get adult {
+    final value = _adult;
+    if (value == null) return null;
+    if (_adult is EqualUnmodifiableListView) return _adult;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'ProfileResponse(success: $success, message: $message, kidProfilesByUserId: $kidProfilesByUserId)';
+    return 'ProfileResponse(success: $success, message: $message, kidProfiles: $kidProfiles, adult: $adult)';
   }
 
   @override
@@ -172,13 +196,18 @@ class _$ProfileResponseImpl extends _ProfileResponse {
             (identical(other.success, success) || other.success == success) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality()
-                .equals(other._kidProfilesByUserId, _kidProfilesByUserId));
+                .equals(other._kidProfiles, _kidProfiles) &&
+            const DeepCollectionEquality().equals(other._adult, _adult));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, success, message,
-      const DeepCollectionEquality().hash(_kidProfilesByUserId));
+  int get hashCode => Object.hash(
+      runtimeType,
+      success,
+      message,
+      const DeepCollectionEquality().hash(_kidProfiles),
+      const DeepCollectionEquality().hash(_adult));
 
   @JsonKey(ignore: true)
   @override
@@ -197,11 +226,11 @@ class _$ProfileResponseImpl extends _ProfileResponse {
 
 abstract class _ProfileResponse extends ProfileResponse {
   factory _ProfileResponse(
-          {@JsonKey(name: 'success') required final bool success,
-          @JsonKey(name: 'message') required final String message,
-          @JsonKey(name: 'kidProfilesByUserId')
-          required final List<KidProfileByUserIdModel> kidProfilesByUserId}) =
-      _$ProfileResponseImpl;
+      {@JsonKey(name: 'success') required final bool success,
+      @JsonKey(name: 'message') required final String message,
+      @JsonKey(name: 'kidProfiles') final List<KidProfileModel>? kidProfiles,
+      @JsonKey(name: 'adult')
+      final List<AdultModel>? adult}) = _$ProfileResponseImpl;
   _ProfileResponse._() : super._();
 
   factory _ProfileResponse.fromJson(Map<String, dynamic> json) =
@@ -214,8 +243,11 @@ abstract class _ProfileResponse extends ProfileResponse {
   @JsonKey(name: 'message')
   String get message;
   @override
-  @JsonKey(name: 'kidProfilesByUserId')
-  List<KidProfileByUserIdModel> get kidProfilesByUserId;
+  @JsonKey(name: 'kidProfiles')
+  List<KidProfileModel>? get kidProfiles;
+  @override
+  @JsonKey(name: 'adult')
+  List<AdultModel>? get adult;
   @override
   @JsonKey(ignore: true)
   _$$ProfileResponseImplCopyWith<_$ProfileResponseImpl> get copyWith =>

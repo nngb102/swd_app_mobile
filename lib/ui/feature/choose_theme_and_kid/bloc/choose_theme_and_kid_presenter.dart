@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/model/auth/result.dart';
 
 import '../../../../data/model/package_themes/themes_model.dart';
-import '../../../../data/model/profile/kid_profile_by_user_id_model.dart';
+import '../../../../data/model/profile/kid_profile_model.dart';
 import '../../../../data/model/profile/theme_id_model.dart';
 import '../../../../data/model/source%20data/api_client.dart';
 import '../../../../injection/injector.dart';
@@ -41,9 +41,12 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
     await Result.guardFuture(() async => apiClient.getProfiles()).then(
       (value) => value.when(
         success: (data) {
-          final kidProfileByUserIdModel = data.kidProfilesByUserId;
+          final kidProfileByUserIdModel = data.kidProfiles;
           emit(
-              state.copyWith(kidProfileByUserIdModel: kidProfileByUserIdModel));
+            state.copyWith(
+              kidProfileByUserIdModel: kidProfileByUserIdModel ?? [],
+            ),
+          );
         },
         failure: (error) => onErrorCallBack?.call(error),
       ),
@@ -69,7 +72,7 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
     emit(state.copyWith(themeSelected: themeSelected));
   }
 
-  void chooseKid(KidProfileByUserIdModel kidSelected) {
+  void chooseKid(KidProfileModel kidSelected) {
     emit(state.copyWith(kidSelected: kidSelected));
   }
 }

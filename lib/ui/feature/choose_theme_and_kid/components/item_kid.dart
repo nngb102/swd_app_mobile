@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/model/profile/kid_profile_by_user_id_model.dart';
+import '../../../../data/model/profile/kid_profile_model.dart';
 
 class ItemKid extends StatefulWidget {
   const ItemKid({
@@ -9,9 +9,9 @@ class ItemKid extends StatefulWidget {
     this.onTap,
   });
 
-  final ValueChanged<KidProfileByUserIdModel>? onTap;
+  final ValueChanged<KidProfileModel>? onTap;
 
-  final KidProfileByUserIdModel kid;
+  final KidProfileModel kid;
 
   final bool isSelected;
 

@@ -25,9 +25,9 @@ mixin _$AuthLogin {
   @JsonKey(name: 'message')
   String get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'accessToken')
-  String get accessToken => throw _privateConstructorUsedError;
+  String? get accessToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'user')
-  UserResponse get user => throw _privateConstructorUsedError;
+  UserResponse? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,10 +43,10 @@ abstract class $AuthLoginCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'success') bool success,
       @JsonKey(name: 'message') String message,
-      @JsonKey(name: 'accessToken') String accessToken,
-      @JsonKey(name: 'user') UserResponse user});
+      @JsonKey(name: 'accessToken') String? accessToken,
+      @JsonKey(name: 'user') UserResponse? user});
 
-  $UserResponseCopyWith<$Res> get user;
+  $UserResponseCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -64,8 +64,8 @@ class _$AuthLoginCopyWithImpl<$Res, $Val extends AuthLogin>
   $Res call({
     Object? success = null,
     Object? message = null,
-    Object? accessToken = null,
-    Object? user = null,
+    Object? accessToken = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       success: null == success
@@ -76,21 +76,25 @@ class _$AuthLoginCopyWithImpl<$Res, $Val extends AuthLogin>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      accessToken: null == accessToken
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      user: null == user
+              as String?,
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserResponse,
+              as UserResponse?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserResponseCopyWith<$Res> get user {
-    return $UserResponseCopyWith<$Res>(_value.user, (value) {
+  $UserResponseCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserResponseCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -107,11 +111,11 @@ abstract class _$$AuthLoginImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'success') bool success,
       @JsonKey(name: 'message') String message,
-      @JsonKey(name: 'accessToken') String accessToken,
-      @JsonKey(name: 'user') UserResponse user});
+      @JsonKey(name: 'accessToken') String? accessToken,
+      @JsonKey(name: 'user') UserResponse? user});
 
   @override
-  $UserResponseCopyWith<$Res> get user;
+  $UserResponseCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -127,8 +131,8 @@ class __$$AuthLoginImplCopyWithImpl<$Res>
   $Res call({
     Object? success = null,
     Object? message = null,
-    Object? accessToken = null,
-    Object? user = null,
+    Object? accessToken = freezed,
+    Object? user = freezed,
   }) {
     return _then(_$AuthLoginImpl(
       success: null == success
@@ -139,14 +143,14 @@ class __$$AuthLoginImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      accessToken: null == accessToken
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      user: null == user
+              as String?,
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserResponse,
+              as UserResponse?,
     ));
   }
 }
@@ -158,8 +162,8 @@ class _$AuthLoginImpl extends _AuthLogin {
   _$AuthLoginImpl(
       {@JsonKey(name: 'success') required this.success,
       @JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'accessToken') required this.accessToken,
-      @JsonKey(name: 'user') required this.user})
+      @JsonKey(name: 'accessToken') this.accessToken,
+      @JsonKey(name: 'user') this.user})
       : super._();
 
   factory _$AuthLoginImpl.fromJson(Map<String, dynamic> json) =>
@@ -173,10 +177,10 @@ class _$AuthLoginImpl extends _AuthLogin {
   final String message;
   @override
   @JsonKey(name: 'accessToken')
-  final String accessToken;
+  final String? accessToken;
   @override
   @JsonKey(name: 'user')
-  final UserResponse user;
+  final UserResponse? user;
 
   @override
   String toString() {
@@ -216,11 +220,10 @@ class _$AuthLoginImpl extends _AuthLogin {
 
 abstract class _AuthLogin extends AuthLogin {
   factory _AuthLogin(
-          {@JsonKey(name: 'success') required final bool success,
-          @JsonKey(name: 'message') required final String message,
-          @JsonKey(name: 'accessToken') required final String accessToken,
-          @JsonKey(name: 'user') required final UserResponse user}) =
-      _$AuthLoginImpl;
+      {@JsonKey(name: 'success') required final bool success,
+      @JsonKey(name: 'message') required final String message,
+      @JsonKey(name: 'accessToken') final String? accessToken,
+      @JsonKey(name: 'user') final UserResponse? user}) = _$AuthLoginImpl;
   _AuthLogin._() : super._();
 
   factory _AuthLogin.fromJson(Map<String, dynamic> json) =
@@ -234,10 +237,10 @@ abstract class _AuthLogin extends AuthLogin {
   String get message;
   @override
   @JsonKey(name: 'accessToken')
-  String get accessToken;
+  String? get accessToken;
   @override
   @JsonKey(name: 'user')
-  UserResponse get user;
+  UserResponse? get user;
   @override
   @JsonKey(ignore: true)
   _$$AuthLoginImplCopyWith<_$AuthLoginImpl> get copyWith =>

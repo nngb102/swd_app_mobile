@@ -43,10 +43,9 @@ class ButtonLogin extends StatelessWidget {
                 );
               },
             );
-            if (signInPresenter.state.token == null) {
-              await signInPresenter.callBack(showToast);
-            } else {
-              signInPresenter.addToken();
+           
+         
+             
 
               await EasyLoading.dismiss();
 
@@ -57,7 +56,7 @@ class ButtonLogin extends StatelessWidget {
                 ),
               );
             }
-          }
+          
         },
         child: Container(
           height: 50,

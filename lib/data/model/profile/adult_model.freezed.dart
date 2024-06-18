@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_response.dart';
+part of 'adult_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,56 +14,50 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
-  return _UserResponse.fromJson(json);
+AdultModel _$AdultModelFromJson(Map<String, dynamic> json) {
+  return _AdultModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserResponse {
+mixin _$AdultModel {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'username')
-  String? get username => throw _privateConstructorUsedError;
-  @JsonKey(name: 'password')
-  String? get password => throw _privateConstructorUsedError;
+  int? get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'fullName')
-  String? get fullName => throw _privateConstructorUsedError;
+  int? get fullName => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone')
   String? get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'address')
   String? get address => throw _privateConstructorUsedError;
-  @JsonKey(name: 'status')
-  bool? get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserResponseCopyWith<UserResponse> get copyWith =>
+  $AdultModelCopyWith<AdultModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserResponseCopyWith<$Res> {
-  factory $UserResponseCopyWith(
-          UserResponse value, $Res Function(UserResponse) then) =
-      _$UserResponseCopyWithImpl<$Res, UserResponse>;
+abstract class $AdultModelCopyWith<$Res> {
+  factory $AdultModelCopyWith(
+          AdultModel value, $Res Function(AdultModel) then) =
+      _$AdultModelCopyWithImpl<$Res, AdultModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'username') String? username,
-      @JsonKey(name: 'password') String? password,
-      @JsonKey(name: 'fullName') String? fullName,
+      @JsonKey(name: 'username') int? username,
+      @JsonKey(name: 'fullName') int? fullName,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'phone') String? phone,
-      @JsonKey(name: 'address') String? address,
-      @JsonKey(name: 'status') bool? status});
+      @JsonKey(name: 'address') String? address});
 }
 
 /// @nodoc
-class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
-    implements $UserResponseCopyWith<$Res> {
-  _$UserResponseCopyWithImpl(this._value, this._then);
+class _$AdultModelCopyWithImpl<$Res, $Val extends AdultModel>
+    implements $AdultModelCopyWith<$Res> {
+  _$AdultModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,12 +69,10 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
   $Res call({
     Object? id = null,
     Object? username = freezed,
-    Object? password = freezed,
     Object? fullName = freezed,
     Object? email = freezed,
     Object? phone = freezed,
     Object? address = freezed,
-    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -90,15 +82,11 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -111,39 +99,33 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$UserResponseImplCopyWith<$Res>
-    implements $UserResponseCopyWith<$Res> {
-  factory _$$UserResponseImplCopyWith(
-          _$UserResponseImpl value, $Res Function(_$UserResponseImpl) then) =
-      __$$UserResponseImplCopyWithImpl<$Res>;
+abstract class _$$AdultModelImplCopyWith<$Res>
+    implements $AdultModelCopyWith<$Res> {
+  factory _$$AdultModelImplCopyWith(
+          _$AdultModelImpl value, $Res Function(_$AdultModelImpl) then) =
+      __$$AdultModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'username') String? username,
-      @JsonKey(name: 'password') String? password,
-      @JsonKey(name: 'fullName') String? fullName,
+      @JsonKey(name: 'username') int? username,
+      @JsonKey(name: 'fullName') int? fullName,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'phone') String? phone,
-      @JsonKey(name: 'address') String? address,
-      @JsonKey(name: 'status') bool? status});
+      @JsonKey(name: 'address') String? address});
 }
 
 /// @nodoc
-class __$$UserResponseImplCopyWithImpl<$Res>
-    extends _$UserResponseCopyWithImpl<$Res, _$UserResponseImpl>
-    implements _$$UserResponseImplCopyWith<$Res> {
-  __$$UserResponseImplCopyWithImpl(
-      _$UserResponseImpl _value, $Res Function(_$UserResponseImpl) _then)
+class __$$AdultModelImplCopyWithImpl<$Res>
+    extends _$AdultModelCopyWithImpl<$Res, _$AdultModelImpl>
+    implements _$$AdultModelImplCopyWith<$Res> {
+  __$$AdultModelImplCopyWithImpl(
+      _$AdultModelImpl _value, $Res Function(_$AdultModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,14 +133,12 @@ class __$$UserResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? username = freezed,
-    Object? password = freezed,
     Object? fullName = freezed,
     Object? email = freezed,
     Object? phone = freezed,
     Object? address = freezed,
-    Object? status = freezed,
   }) {
-    return _then(_$UserResponseImpl(
+    return _then(_$AdultModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -166,15 +146,11 @@ class __$$UserResponseImplCopyWithImpl<$Res>
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -187,10 +163,6 @@ class __$$UserResponseImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 }
@@ -198,33 +170,28 @@ class __$$UserResponseImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$UserResponseImpl extends _UserResponse {
-  _$UserResponseImpl(
+class _$AdultModelImpl extends _AdultModel {
+  _$AdultModelImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'username') this.username,
-      @JsonKey(name: 'password') this.password,
       @JsonKey(name: 'fullName') this.fullName,
       @JsonKey(name: 'email') this.email,
       @JsonKey(name: 'phone') this.phone,
-      @JsonKey(name: 'address') this.address,
-      @JsonKey(name: 'status') this.status})
+      @JsonKey(name: 'address') this.address})
       : super._();
 
-  factory _$UserResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserResponseImplFromJson(json);
+  factory _$AdultModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AdultModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
   final int id;
   @override
   @JsonKey(name: 'username')
-  final String? username;
-  @override
-  @JsonKey(name: 'password')
-  final String? password;
+  final int? username;
   @override
   @JsonKey(name: 'fullName')
-  final String? fullName;
+  final int? fullName;
   @override
   @JsonKey(name: 'email')
   final String? email;
@@ -234,79 +201,68 @@ class _$UserResponseImpl extends _UserResponse {
   @override
   @JsonKey(name: 'address')
   final String? address;
-  @override
-  @JsonKey(name: 'status')
-  final bool? status;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, username: $username, password: $password, fullName: $fullName, email: $email, phone: $phone, address: $address, status: $status)';
+    return 'AdultModel(id: $id, username: $username, fullName: $fullName, email: $email, phone: $phone, address: $address)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserResponseImpl &&
+            other is _$AdultModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.address, address) || other.address == address));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, username, password, fullName,
-      email, phone, address, status);
+  int get hashCode =>
+      Object.hash(runtimeType, id, username, fullName, email, phone, address);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserResponseImplCopyWith<_$UserResponseImpl> get copyWith =>
-      __$$UserResponseImplCopyWithImpl<_$UserResponseImpl>(this, _$identity);
+  _$$AdultModelImplCopyWith<_$AdultModelImpl> get copyWith =>
+      __$$AdultModelImplCopyWithImpl<_$AdultModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserResponseImplToJson(
+    return _$$AdultModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserResponse extends UserResponse {
-  factory _UserResponse(
+abstract class _AdultModel extends AdultModel {
+  factory _AdultModel(
       {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'username') final String? username,
-      @JsonKey(name: 'password') final String? password,
-      @JsonKey(name: 'fullName') final String? fullName,
+      @JsonKey(name: 'username') final int? username,
+      @JsonKey(name: 'fullName') final int? fullName,
       @JsonKey(name: 'email') final String? email,
       @JsonKey(name: 'phone') final String? phone,
-      @JsonKey(name: 'address') final String? address,
-      @JsonKey(name: 'status') final bool? status}) = _$UserResponseImpl;
-  _UserResponse._() : super._();
+      @JsonKey(name: 'address') final String? address}) = _$AdultModelImpl;
+  _AdultModel._() : super._();
 
-  factory _UserResponse.fromJson(Map<String, dynamic> json) =
-      _$UserResponseImpl.fromJson;
+  factory _AdultModel.fromJson(Map<String, dynamic> json) =
+      _$AdultModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
   int get id;
   @override
   @JsonKey(name: 'username')
-  String? get username;
-  @override
-  @JsonKey(name: 'password')
-  String? get password;
+  int? get username;
   @override
   @JsonKey(name: 'fullName')
-  String? get fullName;
+  int? get fullName;
   @override
   @JsonKey(name: 'email')
   String? get email;
@@ -317,10 +273,7 @@ abstract class _UserResponse extends UserResponse {
   @JsonKey(name: 'address')
   String? get address;
   @override
-  @JsonKey(name: 'status')
-  bool? get status;
-  @override
   @JsonKey(ignore: true)
-  _$$UserResponseImplCopyWith<_$UserResponseImpl> get copyWith =>
+  _$$AdultModelImplCopyWith<_$AdultModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
