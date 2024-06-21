@@ -53,7 +53,7 @@ class SignUpPresenter extends Cubit<SignUpState> {
     Function(CustomException error)? onErrorCallBack,
   }) async {
     final userRequest = UserRequest(
-      username: state.email,
+      username: state.userName,
       password: state.password,
       fullName: state.email,
       email: state.email,

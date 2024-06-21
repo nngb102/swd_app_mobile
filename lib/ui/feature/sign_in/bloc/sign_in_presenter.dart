@@ -31,6 +31,7 @@ class SignInPresenter extends Cubit<SignInState> {
   }
 
   Future<void> onTapSignIn({
+    Function()? onSuccessCallBack,
     Function(CustomException error)? onErrorCallBack,
   }) async {
     final user = User(username: state.userName, password: state.password);
@@ -39,13 +40,16 @@ class SignInPresenter extends Cubit<SignInState> {
       (value) => value.when(
         success: (data) async {
           final token = data.accessToken;
-          print(token);
+          print('token : $token');
           if (token != null) {
             await saveUser(data.user);
             addToken(token);
-            emit(state.copyWith(
-              token: token,
-            ));
+            emit(
+              state.copyWith(
+                token: token,
+              ),
+            );
+            onSuccessCallBack?.call();
           } else {
             onErrorCallBack?.call(CustomException(Exception(data.message)));
           }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../home/home.dart';
+import '../profile/profile_screen.dart';
 
 class Primary extends StatefulWidget {
   const Primary({super.key});
@@ -16,9 +17,7 @@ class _PrimaryState extends State<Primary> {
     Text(
       'Cart',
     ),
-    Text(
-      'Profile',
-    )
+    const ProfileScreen()
   ];
 
   void _onItemTapped(int index) {

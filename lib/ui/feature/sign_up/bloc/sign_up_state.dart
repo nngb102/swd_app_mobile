@@ -15,6 +15,7 @@ class SignUpState with _$SignUpState {
     required String fullName,
     required String phone,
     required String address,
+    required String userName,
     required UserRequest userRequest,
   }) = _SignInState;
 
@@ -27,6 +28,7 @@ class SignUpState with _$SignUpState {
         fullName: '',
         phone: '',
         address: '',
+        userName: '',
         userRequest: UserRequest(
           username: '',
           password: '',

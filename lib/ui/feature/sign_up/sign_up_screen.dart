@@ -10,7 +10,7 @@ import '../../widget/app_logo.dart';
 import '../../widget/common_button/common_button.dart';
 import '../../widget/text_input/common_text_input.dart';
 
-import '../home/home.dart';
+import '../primary/primary.dart';
 import 'bloc/sign_up_presenter.dart';
 import 'bloc/sign_up_state.dart';
 
@@ -93,7 +93,6 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
                     const SizedBox(height: 10),
                     // Ô Nhập Email
                     CommonTextInput(
-                      isPass: true,
                       hintText: 'Enter your Email',
                       textEditingController: textEditingControllerEmail,
                       onChanged: (value) {
@@ -105,7 +104,6 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
                     const SizedBox(height: 10),
                     // Ô Nhập Phone
                     CommonTextInput(
-                      isPass: true,
                       hintText: 'Enter your Phone',
                       textEditingController: textEditingControllerPhone,
                       onChanged: (value) {
@@ -117,7 +115,6 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
                     const SizedBox(height: 10),
                     // Ô Nhập Address
                     CommonTextInput(
-                      isPass: true,
                       hintText: 'Enter your Address',
                       textEditingController: textEditingControllerAddress,
                       onChanged: (value) {
@@ -129,9 +126,10 @@ class _SignUpScreenState extends BasePageState<SignUpScreen> {
                     const SizedBox(height: 10),
                     // Ô Nhập  Password
                     CommonTextInput(
-                      isPass: false,
+                      isPass: true,
                       hintText: 'Enter your password',
                       textEditingController: textEditingControllerPassword,
+                      textInputType: TextInputType.visiblePassword,
                       onChanged: (value) {
                         _signUpPresenter.inputPassword(value);
                       },
@@ -163,11 +161,14 @@ extension on _SignUpScreenState {
     await _signUpPresenter.onTapSignUp(
       onSuccessCallBack: () async {
         await EasyLoading.dismiss();
-
+        await Fluttertoast.showToast(
+          msg: 'Sign up success',
+          toastLength: Toast.LENGTH_SHORT,
+        );
         return Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const Home(),
+            builder: (context) => const Primary(),
           ),
         );
       },

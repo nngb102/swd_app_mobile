@@ -32,25 +32,34 @@ class ButtonLogin extends StatelessWidget {
                 maskType: EasyLoadingMaskType.black, dismissOnTap: false);
 
             await signInPresenter.onTapSignIn(
+              onSuccessCallBack: () async {
+                await EasyLoading.dismiss();
+                return Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Primary(),
+                  ),
+                );
+              },
               onErrorCallBack: (error) async {
                 await EasyLoading.dismiss();
                 return Future.delayed(
                   const Duration(seconds: 1),
-                  () => Fluttertoast.showToast(
-                    msg: error.message ?? 'Error',
-                    toastLength: Toast.LENGTH_SHORT,
-                  ),
+                  () {
+                    if (error.statusCode == 401) {
+                      return Fluttertoast.showToast(
+                        msg:
+                            error.message ?? 'Lỗi đăng nhập, vui lòng thử lại!',
+                        toastLength: Toast.LENGTH_SHORT,
+                      );
+                    }
+                    return Fluttertoast.showToast(
+                      msg: error.message ?? 'Lỗi đăng nhập, vui lòng thử lại!',
+                      toastLength: Toast.LENGTH_SHORT,
+                    );
+                  },
                 );
               },
-            );
-
-            await EasyLoading.dismiss();
-
-            await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Primary(),
-              ),
             );
           }
         },

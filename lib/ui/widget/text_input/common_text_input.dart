@@ -6,6 +6,7 @@ class CommonTextInput extends StatelessWidget {
   const CommonTextInput({
     required this.textEditingController,
     required this.onChanged,
+    this.textInputType = TextInputType.text,
     super.key,
     this.hintText = '',
     this.isPass = false,
@@ -15,15 +16,16 @@ class CommonTextInput extends StatelessWidget {
   final Function(String value) onChanged;
   final String hintText;
   final bool isPass;
+  final TextInputType textInputType;
 
   @override
   Widget build(BuildContext context) {
     return TextFieldInput(
       hintText: hintText,
-      isPass: false,
+      isPass: isPass,
       textEditingController: textEditingController,
       onChanged: onChanged,
-      textInputType: TextInputType.emailAddress,
+      textInputType: textInputType,
     );
   }
 }

@@ -22,6 +22,7 @@ mixin _$SignUpState {
   String get fullName => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
   UserRequest get userRequest => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,6 +43,7 @@ abstract class $SignUpStateCopyWith<$Res> {
       String fullName,
       String phone,
       String address,
+      String userName,
       UserRequest userRequest});
 }
 
@@ -64,6 +66,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? fullName = null,
     Object? phone = null,
     Object? address = null,
+    Object? userName = null,
     Object? userRequest = null,
   }) {
     return _then(_value.copyWith(
@@ -91,6 +94,10 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
       userRequest: null == userRequest
           ? _value.userRequest
           : userRequest // ignore: cast_nullable_to_non_nullable
@@ -114,6 +121,7 @@ abstract class _$$SignInStateImplCopyWith<$Res>
       String fullName,
       String phone,
       String address,
+      String userName,
       UserRequest userRequest});
 }
 
@@ -134,6 +142,7 @@ class __$$SignInStateImplCopyWithImpl<$Res>
     Object? fullName = null,
     Object? phone = null,
     Object? address = null,
+    Object? userName = null,
     Object? userRequest = null,
   }) {
     return _then(_$SignInStateImpl(
@@ -161,6 +170,10 @@ class __$$SignInStateImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
       userRequest: null == userRequest
           ? _value.userRequest
           : userRequest // ignore: cast_nullable_to_non_nullable
@@ -179,6 +192,7 @@ class _$SignInStateImpl extends _SignInState {
       required this.fullName,
       required this.phone,
       required this.address,
+      required this.userName,
       required this.userRequest})
       : super._();
 
@@ -195,11 +209,13 @@ class _$SignInStateImpl extends _SignInState {
   @override
   final String address;
   @override
+  final String userName;
+  @override
   final UserRequest userRequest;
 
   @override
   String toString() {
-    return 'SignUpState(check: $check, email: $email, password: $password, fullName: $fullName, phone: $phone, address: $address, userRequest: $userRequest)';
+    return 'SignUpState(check: $check, email: $email, password: $password, fullName: $fullName, phone: $phone, address: $address, userName: $userName, userRequest: $userRequest)';
   }
 
   @override
@@ -215,13 +231,15 @@ class _$SignInStateImpl extends _SignInState {
                 other.fullName == fullName) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
             (identical(other.userRequest, userRequest) ||
                 other.userRequest == userRequest));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, check, email, password, fullName,
-      phone, address, userRequest);
+      phone, address, userName, userRequest);
 
   @JsonKey(ignore: true)
   @override
@@ -238,6 +256,7 @@ abstract class _SignInState extends SignUpState {
       required final String fullName,
       required final String phone,
       required final String address,
+      required final String userName,
       required final UserRequest userRequest}) = _$SignInStateImpl;
   _SignInState._() : super._();
 
@@ -253,6 +272,8 @@ abstract class _SignInState extends SignUpState {
   String get phone;
   @override
   String get address;
+  @override
+  String get userName;
   @override
   UserRequest get userRequest;
   @override

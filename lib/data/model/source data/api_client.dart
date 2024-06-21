@@ -22,9 +22,9 @@ abstract class ApiClient {
     String? authToken,
   }) {
     dio
-      ..options.connectTimeout = Duration(minutes: 1) // 60 seconds
-      ..options.receiveTimeout = Duration(minutes: 1)
-      ..options.sendTimeout = Duration(minutes: 1)
+      ..options.connectTimeout = const Duration(minutes: 1) 
+      ..options.receiveTimeout = const Duration(minutes: 1)
+      ..options.sendTimeout = const Duration(minutes: 1)
       ..interceptors.add(InterceptorsWrapper(
         onRequest: (options, handler) {
           if (authToken != null) {
