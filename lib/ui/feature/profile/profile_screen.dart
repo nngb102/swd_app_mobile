@@ -80,12 +80,13 @@ class _ProfileScreenState extends BasePageState<ProfileScreen> {
             txt: user?.fullName ?? '',
           ),
           InkWell(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Primary(),
-              ),
-            ),
+            // onTap: () => Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => const Primary(),
+            //   ),
+            // ),
+            onTap: () {},
             child: const ProFileMenu(
               isShowIconTraining: true,
               icon: Icons.child_care,
