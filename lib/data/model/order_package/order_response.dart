@@ -9,9 +9,9 @@ part 'order_response.g.dart';
 class OrderResponse with _$OrderResponse {
   @JsonSerializable(explicitToJson: true)
   factory OrderResponse({
-    @JsonKey(name: 'success') required bool success,
-    @JsonKey(name: 'message') required String message,
     @JsonKey(name: 'order') required OrderModel order,
+    @JsonKey(name: 'success') bool? success,
+    @JsonKey(name: 'message') String? message,
   }) = _ThemeResponse;
 
   factory OrderResponse.fromJson(Map<String, dynamic> json) =>

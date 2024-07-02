@@ -38,9 +38,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        builder: EasyLoading.init(),
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        home: SignIn());
+      builder: EasyLoading.init(),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      home: const SignIn(),
+    );
   }
 }

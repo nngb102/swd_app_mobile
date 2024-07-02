@@ -48,8 +48,7 @@ class ButtonLogin extends StatelessWidget {
                   () {
                     if (error.statusCode == 401) {
                       return Fluttertoast.showToast(
-                        msg:
-                            error.message ?? 'Lỗi đăng nhập, vui lòng thử lại!',
+                        msg: 'Người dùng không tồn tại',
                         toastLength: Toast.LENGTH_SHORT,
                       );
                     }

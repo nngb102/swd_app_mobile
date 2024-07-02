@@ -20,12 +20,12 @@ OrderResponse _$OrderResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderResponse {
-  @JsonKey(name: 'success')
-  bool get success => throw _privateConstructorUsedError;
-  @JsonKey(name: 'message')
-  String get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'order')
   OrderModel get order => throw _privateConstructorUsedError;
+  @JsonKey(name: 'success')
+  bool? get success => throw _privateConstructorUsedError;
+  @JsonKey(name: 'message')
+  String? get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +40,9 @@ abstract class $OrderResponseCopyWith<$Res> {
       _$OrderResponseCopyWithImpl<$Res, OrderResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'success') bool success,
-      @JsonKey(name: 'message') String message,
-      @JsonKey(name: 'order') OrderModel order});
+      {@JsonKey(name: 'order') OrderModel order,
+      @JsonKey(name: 'success') bool? success,
+      @JsonKey(name: 'message') String? message});
 
   $OrderModelCopyWith<$Res> get order;
 }
@@ -60,23 +60,23 @@ class _$OrderResponseCopyWithImpl<$Res, $Val extends OrderResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
-    Object? message = null,
     Object? order = null,
+    Object? success = freezed,
+    Object? message = freezed,
   }) {
     return _then(_value.copyWith(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       order: null == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as OrderModel,
+      success: freezed == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -98,9 +98,9 @@ abstract class _$$ThemeResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'success') bool success,
-      @JsonKey(name: 'message') String message,
-      @JsonKey(name: 'order') OrderModel order});
+      {@JsonKey(name: 'order') OrderModel order,
+      @JsonKey(name: 'success') bool? success,
+      @JsonKey(name: 'message') String? message});
 
   @override
   $OrderModelCopyWith<$Res> get order;
@@ -117,23 +117,23 @@ class __$$ThemeResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
-    Object? message = null,
     Object? order = null,
+    Object? success = freezed,
+    Object? message = freezed,
   }) {
     return _then(_$ThemeResponseImpl(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       order: null == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as OrderModel,
+      success: freezed == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -143,27 +143,27 @@ class __$$ThemeResponseImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$ThemeResponseImpl extends _ThemeResponse {
   _$ThemeResponseImpl(
-      {@JsonKey(name: 'success') required this.success,
-      @JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'order') required this.order})
+      {@JsonKey(name: 'order') required this.order,
+      @JsonKey(name: 'success') this.success,
+      @JsonKey(name: 'message') this.message})
       : super._();
 
   factory _$ThemeResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ThemeResponseImplFromJson(json);
 
   @override
-  @JsonKey(name: 'success')
-  final bool success;
-  @override
-  @JsonKey(name: 'message')
-  final String message;
-  @override
   @JsonKey(name: 'order')
   final OrderModel order;
+  @override
+  @JsonKey(name: 'success')
+  final bool? success;
+  @override
+  @JsonKey(name: 'message')
+  final String? message;
 
   @override
   String toString() {
-    return 'OrderResponse(success: $success, message: $message, order: $order)';
+    return 'OrderResponse(order: $order, success: $success, message: $message)';
   }
 
   @override
@@ -171,14 +171,14 @@ class _$ThemeResponseImpl extends _ThemeResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ThemeResponseImpl &&
+            (identical(other.order, order) || other.order == order) &&
             (identical(other.success, success) || other.success == success) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, success, message, order);
+  int get hashCode => Object.hash(runtimeType, order, success, message);
 
   @JsonKey(ignore: true)
   @override
@@ -196,24 +196,23 @@ class _$ThemeResponseImpl extends _ThemeResponse {
 
 abstract class _ThemeResponse extends OrderResponse {
   factory _ThemeResponse(
-          {@JsonKey(name: 'success') required final bool success,
-          @JsonKey(name: 'message') required final String message,
-          @JsonKey(name: 'order') required final OrderModel order}) =
-      _$ThemeResponseImpl;
+      {@JsonKey(name: 'order') required final OrderModel order,
+      @JsonKey(name: 'success') final bool? success,
+      @JsonKey(name: 'message') final String? message}) = _$ThemeResponseImpl;
   _ThemeResponse._() : super._();
 
   factory _ThemeResponse.fromJson(Map<String, dynamic> json) =
       _$ThemeResponseImpl.fromJson;
 
   @override
-  @JsonKey(name: 'success')
-  bool get success;
-  @override
-  @JsonKey(name: 'message')
-  String get message;
-  @override
   @JsonKey(name: 'order')
   OrderModel get order;
+  @override
+  @JsonKey(name: 'success')
+  bool? get success;
+  @override
+  @JsonKey(name: 'message')
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$ThemeResponseImplCopyWith<_$ThemeResponseImpl> get copyWith =>

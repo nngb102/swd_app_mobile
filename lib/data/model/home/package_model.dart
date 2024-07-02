@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'package_model.freezed.dart';
@@ -11,7 +13,7 @@ class Package with _$Package {
     @JsonKey(name: 'image') String? image,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'price') String? price,
+    @JsonKey(name: 'price') double? price,
     @JsonKey(name: 'numberOfSend') String? numberOfSend,
     @JsonKey(name: 'status') bool? status,
     @JsonKey(name: 'createdAt') String? createdAt,
@@ -28,7 +30,7 @@ class Package with _$Package {
         image: '',
         name: '',
         description: '',
-        price: '',
+        price: 0,
         numberOfSend: '',
         status: false,
         createdAt: '',

@@ -37,7 +37,10 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
     );
   }
 
-  Future<void> getKid(Function(CustomException error)? onErrorCallBack) async {
+  Future<void> getKid({
+    required Function() onSuccess,
+    Function(CustomException error)? onErrorCallBack,
+  }) async {
     await Result.guardFuture(() async => apiClient.getProfiles()).then(
       (value) => value.when(
         success: (data) {
@@ -47,6 +50,11 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
               kidProfileByUserIdModel: kidProfileByUserIdModel ?? [],
             ),
           );
+
+          if (kidProfileByUserIdModel == null ||
+              kidProfileByUserIdModel.isEmpty) {
+            return onSuccess.call();
+          }
         },
         failure: (error) => onErrorCallBack?.call(error),
       ),
@@ -56,9 +64,21 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
   Future<void> updateProfile(
       {Function()? onSuccessCallBack,
       Function(CustomException error)? onErrorCallBack}) async {
-    await Result.guardFuture(() async => apiClient.updateProfile(
+    await Result.guardFuture(
+      () async => apiClient.updateProfile(
         state.kidSelected?.id ?? 1,
-        ThemeIdModel(themeId: state.themeSelected?.id ?? 0))).then(
+        ThemeIdModel(
+            themeId: state.themeSelected?.id ?? 0,
+            fullName: state.kidSelected?.fullName ?? '',
+            descriptionHobby: state.kidSelected?.descriptionHobby ?? '',
+            yob: state.kidSelected?.yob ?? '',
+            gender: state.kidSelected?.gender ?? '',
+            color: state.kidSelected?.color ?? '',
+            type: state.kidSelected?.type ?? '',
+            material: state.kidSelected?.material ?? '',
+            toyOrigin: state.kidSelected?.typeOrigin ?? ''),
+      ),
+    ).then(
       (value) => value.when(
         success: (data) {
           onSuccessCallBack?.call();
@@ -66,6 +86,7 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
         failure: (error) => onErrorCallBack?.call(error),
       ),
     );
+    onSuccessCallBack?.call();
   }
 
   void chooseTheme(ThemesModel themeSelected) {

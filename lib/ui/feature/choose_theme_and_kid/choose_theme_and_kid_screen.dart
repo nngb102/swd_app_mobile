@@ -7,6 +7,7 @@ import '../../../injection/injector.dart';
 import '../../base/base_page.dart';
 import '../../widget/common_button/common_button.dart';
 import '../confirm_info/confirm_info_screen.dart';
+import '../kids_create/kids_create_screen.dart';
 import 'bloc/choose_theme_and_kid_presenter.dart';
 import 'bloc/choose_theme_and_kid_state.dart';
 import 'components/kid_list.dart';
@@ -70,45 +71,65 @@ class _ChooseThemeAndKidScreenState
               height: 10,
             ),
             _buildKidList(),
-            BlocBuilder<ChooseThemeAndKidPresenter, ChooseThemeAndKidState>(
-              bloc: _chooseThemeAndKidPresenter,
-              builder: (context, state) {
-                return CommonButton(
-                  enable: _chooseThemeAndKidPresenter.state.isEnable,
-                  title: 'Next',
-                  onTap: () async {
-                    // await EasyLoading.show(
-                    //     maskType: EasyLoadingMaskType.black,
-                    //     dismissOnTap: false);
-                    // await _chooseThemeAndKidPresenter.updateProfile(
-                    //   onSuccessCallBack: () async {
-                    //     await EasyLoading.dismiss();
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ConfirmInfoScreen(
-                          package: widget.package,
-                          theme: state.themeSelected!,
-                          kid: state.kidSelected!,
-                        ),
-                      ),
-                    );
-                    // },
-                    // onErrorCallBack: (error) async {
-                    //   await EasyLoading.dismiss();
-                    //   await EasyLoading.showError(error.message ?? 'Error');
-                    //   },
-                    // );
-                  },
-                );
-              },
-            ),
+            _buildButton(),
             const SizedBox(
               height: 24,
             )
           ],
         ),
       ),
+    );
+  }
+
+  BlocBuilder<ChooseThemeAndKidPresenter, ChooseThemeAndKidState>
+      _buildButton() {
+    return BlocBuilder<ChooseThemeAndKidPresenter, ChooseThemeAndKidState>(
+      bloc: _chooseThemeAndKidPresenter,
+      builder: (context, state) {
+        return CommonButton(
+          enable: _chooseThemeAndKidPresenter.state.isEnable,
+          title: 'Next',
+          onTap: () async {
+            await EasyLoading.show(
+                maskType: EasyLoadingMaskType.black, dismissOnTap: false);
+            await _chooseThemeAndKidPresenter.updateProfile(
+              onSuccessCallBack: () async {
+                await EasyLoading.dismiss();
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ConfirmInfoScreen(
+                      package: widget.package,
+                      theme: state.themeSelected!,
+                      kid: state.kidSelected!,
+                    ),
+                  ),
+                );
+              },
+              onErrorCallBack: (error) async {
+                await EasyLoading.dismiss();
+                await showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Error'),
+                      content: Text(error.message ?? ''),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('OK'),
+                        )
+                      ],
+                    );
+                  },
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
 
@@ -147,7 +168,28 @@ extension on _ChooseThemeAndKidScreenState {
     await _chooseThemeAndKidPresenter.getTheme((error) {
       EasyLoading.showError(error.message ?? 'Error');
     });
-    await _chooseThemeAndKidPresenter.getKid((error) {
+    await _chooseThemeAndKidPresenter.getKid(onSuccess: () async {
+      await EasyLoading.dismiss();
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: const Text('You need to create Kid first'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const KidsCreateScreen()));
+                },
+                child: const Text('OK'),
+              )
+            ],
+          );
+        },
+      );
+    }, onErrorCallBack: (error) {
       EasyLoading.showError(error.message ?? 'Error');
     });
     await EasyLoading.dismiss();

@@ -29,7 +29,7 @@ mixin _$Package {
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'price')
-  String? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'numberOfSend')
   String? get numberOfSend => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
@@ -54,7 +54,7 @@ abstract class $PackageCopyWith<$Res> {
       @JsonKey(name: 'image') String? image,
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'price') String? price,
+      @JsonKey(name: 'price') double? price,
       @JsonKey(name: 'numberOfSend') String? numberOfSend,
       @JsonKey(name: 'status') bool? status,
       @JsonKey(name: 'createdAt') String? createdAt,
@@ -104,7 +104,7 @@ class _$PackageCopyWithImpl<$Res, $Val extends Package>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       numberOfSend: freezed == numberOfSend
           ? _value.numberOfSend
           : numberOfSend // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ abstract class _$$PackageImplCopyWith<$Res> implements $PackageCopyWith<$Res> {
       @JsonKey(name: 'image') String? image,
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'price') String? price,
+      @JsonKey(name: 'price') double? price,
       @JsonKey(name: 'numberOfSend') String? numberOfSend,
       @JsonKey(name: 'status') bool? status,
       @JsonKey(name: 'createdAt') String? createdAt,
@@ -185,7 +185,7 @@ class __$$PackageImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       numberOfSend: freezed == numberOfSend
           ? _value.numberOfSend
           : numberOfSend // ignore: cast_nullable_to_non_nullable
@@ -239,7 +239,7 @@ class _$PackageImpl extends _Package {
   final String? description;
   @override
   @JsonKey(name: 'price')
-  final String? price;
+  final double? price;
   @override
   @JsonKey(name: 'numberOfSend')
   final String? numberOfSend;
@@ -303,7 +303,7 @@ abstract class _Package extends Package {
       @JsonKey(name: 'image') final String? image,
       @JsonKey(name: 'name') final String? name,
       @JsonKey(name: 'description') final String? description,
-      @JsonKey(name: 'price') final String? price,
+      @JsonKey(name: 'price') final double? price,
       @JsonKey(name: 'numberOfSend') final String? numberOfSend,
       @JsonKey(name: 'status') final bool? status,
       @JsonKey(name: 'createdAt') final String? createdAt,
@@ -326,7 +326,7 @@ abstract class _Package extends Package {
   String? get description;
   @override
   @JsonKey(name: 'price')
-  String? get price;
+  double? get price;
   @override
   @JsonKey(name: 'numberOfSend')
   String? get numberOfSend;

@@ -197,7 +197,10 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<OrderResponse> addOrderPackage(OrderPackage orderPackage) async {
+  Future<OrderResponse> addOrderPackage(
+    String packageId,
+    OrderPackage orderPackage,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -226,7 +229,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<void> updateProfile(
-    int kidId,
+    int id,
     ThemeIdModel themeId,
   ) async {
     final _extra = <String, dynamic>{};
@@ -235,13 +238,13 @@ class _ApiClient implements ApiClient {
     final _data = <String, dynamic>{};
     _data.addAll(themeId.toJson());
     await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'PUT',
+      method: 'PATCH',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/api/v1/update-profile/{profileId}',
+          '/api/v1/update-profile/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -250,6 +253,60 @@ class _ApiClient implements ApiClient {
           _dio.options.baseUrl,
           baseUrl,
         ))));
+  }
+
+  @override
+  Future<ProfileResponse> createProfile(ProfileRequest userRequest) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = userRequest;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ProfileResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/create-profile',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ProfileResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<OrderPackageByUserResponse> getPackageOrderByUserId() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<OrderPackageByUserResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/get-packageorderbyuserid',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = OrderPackageByUserResponse.fromJson(_result.data!);
+    return value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

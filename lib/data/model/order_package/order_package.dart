@@ -12,7 +12,6 @@ class OrderPackage {
     required this.phone,
     required this.email,
     required this.additionalNotes,
-    required this.status,
   });
 
   factory OrderPackage.fromJson(Map<String, dynamic> json) =>
@@ -23,7 +22,7 @@ class OrderPackage {
   final String kidId;
 
   @JsonKey(name: 'totalPrice')
-  final String totalPrice;
+  final double totalPrice;
 
   @JsonKey(name: 'nameOfAdult')
   final String nameOfAdult;
@@ -39,7 +38,4 @@ class OrderPackage {
 
   @JsonKey(name: 'additionalNotes')
   final String additionalNotes;
-
-  @JsonKey(name: 'status')
-  final bool status;
 }

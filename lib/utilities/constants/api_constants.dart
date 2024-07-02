@@ -23,6 +23,9 @@ class ApiConstants {
   ////addOrderPackage
   static const addOrderPackage = '/api/v1/add-order-package/5';
 
-  /// /api/v1/update-profile/${kidId}
-  static const updateProfile = '/api/v1/update-profile/{profileId}';
+  /// Profile
+  static const updateProfile = '/api/v1/update-profile/{id}';
+  static const createProfile = '/api/v1/create-profile';
+
+  static const getPackageOrderByUserId = '/api/v1/get-packageorderbyuserid';
 }

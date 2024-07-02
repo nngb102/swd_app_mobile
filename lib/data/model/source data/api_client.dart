@@ -6,8 +6,10 @@ import '../auth/auth_login.dart';
 import '../home/package_response.dart';
 import '../my_stery_box/mystery_box_response.dart';
 import '../order_package/order_package.dart';
+import '../order_package/order_package_by_user_response.dart';
 import '../order_package/order_response.dart';
 import '../package_themes/theme_response.dart';
+import '../profile/profile_request.dart';
 import '../profile/profile_response.dart';
 import '../profile/theme_id_model.dart';
 import '../sign_in/user.dart';
@@ -22,7 +24,7 @@ abstract class ApiClient {
     String? authToken,
   }) {
     dio
-      ..options.connectTimeout = const Duration(minutes: 1) 
+      ..options.connectTimeout = const Duration(minutes: 1)
       ..options.receiveTimeout = const Duration(minutes: 1)
       ..options.sendTimeout = const Duration(minutes: 1)
       ..interceptors.add(InterceptorsWrapper(
@@ -66,13 +68,21 @@ abstract class ApiClient {
 
   @POST(ApiConstants.addOrderPackage)
   Future<OrderResponse> addOrderPackage(
-    // @Path('packageId') String packageId,
+    @Path('packageId') String packageId,
     @Body() OrderPackage orderPackage,
   );
 
-  @PUT(ApiConstants.updateProfile)
+  @PATCH(ApiConstants.updateProfile)
   Future<void> updateProfile(
-    @Path('kidId') int kidId,
+    @Path('id') int id,
     @Body() ThemeIdModel themeId,
   );
+
+  @POST(ApiConstants.createProfile)
+  Future<ProfileResponse> createProfile(
+    @Body() ProfileRequest userRequest,
+  );
+
+  @GET(ApiConstants.getPackageOrderByUserId)
+  Future<OrderPackageByUserResponse> getPackageOrderByUserId();
 }

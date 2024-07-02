@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../home/home.dart';
+import '../orders/orders_screen.dart';
 import '../profile/profile_screen.dart';
 
 class Primary extends StatefulWidget {
@@ -14,9 +15,7 @@ class _PrimaryState extends State<Primary> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const Home(),
-    Text(
-      'Cart',
-    ),
+    const OrdersScreen(),
     const ProfileScreen()
   ];
 
@@ -43,7 +42,7 @@ class _PrimaryState extends State<Primary> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart),
-              label: 'Cart',
+              label: 'Orders',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.people),

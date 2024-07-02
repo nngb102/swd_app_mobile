@@ -12,6 +12,7 @@ import '../../../injection/injector.dart';
 import '../../base/base_page.dart';
 import '../../widget/app_logo.dart';
 import '../../widget/common_button/common_button.dart';
+import '../pay_success/pay_success_screen.dart';
 import 'bloc/choose_box_presenter.dart';
 import 'bloc/choose_box_state.dart';
 import 'componets/box_list.dart';
@@ -98,22 +99,12 @@ class _ChooseBoxState extends BasePageState<ChooseBoxScreen> {
                             nameOfKid: widget.kid.fullName ?? '',
                             onSuccessCallBack: () async {
                               await EasyLoading.dismiss();
-                              await showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: const Text('Success'),
-                                    content: const Text('Order success'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text('OK'),
-                                      )
-                                    ],
-                                  );
-                                },
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PaySuccessScreen(
+                                      text: 'PaySuccessScreen'),
+                                ),
                               );
                             },
                             onErrorCallBack: (error) async {

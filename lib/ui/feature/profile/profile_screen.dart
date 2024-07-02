@@ -4,8 +4,7 @@ import '../../../injection/injector.dart';
 import '../../base/base_page.dart';
 import '../../bloc/ui_presenter.dart';
 import '../../resources/app_colors.dart';
-
-import '../sign_in/bloc/sign_in_presenter.dart';
+import '../kids_profile/kids_profile_screen.dart';
 import 'components/profile_menu.dart';
 
 class ProfileScreen extends BasePage {
@@ -80,13 +79,12 @@ class _ProfileScreenState extends BasePageState<ProfileScreen> {
             txt: user?.fullName ?? '',
           ),
           InkWell(
-            // onTap: () => Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => const Primary(),
-            //   ),
-            // ),
-            onTap: () {},
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const KidsProfileScreen(),
+              ),
+            ),
             child: const ProFileMenu(
               isShowIconTraining: true,
               icon: Icons.child_care,

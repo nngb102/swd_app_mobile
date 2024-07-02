@@ -52,12 +52,12 @@ class _SignInState extends State<SignIn> {
           Form(
             child: Column(
               children: [
-                // Ô Nhập username
+                // Input username
                 InputUserName(
                   signInPresenter: _signInPresenter,
                 ),
                 const SizedBox(height: 20),
-                // Ô Nhập Password
+                // Input Password
                 InputPassword(
                   signInPresenter: _signInPresenter,
                 ),

@@ -8,14 +8,14 @@ part of 'order_response.dart';
 
 _$ThemeResponseImpl _$$ThemeResponseImplFromJson(Map<String, dynamic> json) =>
     _$ThemeResponseImpl(
-      success: json['success'] as bool,
-      message: json['message'] as String,
       order: OrderModel.fromJson(json['order'] as Map<String, dynamic>),
+      success: json['success'] as bool?,
+      message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$$ThemeResponseImplToJson(_$ThemeResponseImpl instance) =>
     <String, dynamic>{
+      'order': instance.order.toJson(),
       'success': instance.success,
       'message': instance.message,
-      'order': instance.order.toJson(),
     };

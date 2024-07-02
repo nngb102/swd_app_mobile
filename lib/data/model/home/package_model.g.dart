@@ -12,7 +12,7 @@ _$PackageImpl _$$PackageImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       name: json['name'] as String?,
       description: json['description'] as String?,
-      price: json['price'] as String?,
+      price: (json['price'] as num?)?.toDouble(),
       numberOfSend: json['numberOfSend'] as String?,
       status: json['status'] as bool?,
       createdAt: json['createdAt'] as String?,
