@@ -13,7 +13,8 @@ OrderPackage _$OrderPackageFromJson(Map<String, dynamic> json) => OrderPackage(
       nameOfKid: json['nameOfKid'] as String,
       phone: json['phone'] as String,
       email: json['email'] as String,
-      additionalNotes: json['additionalNotes'] as String,
+      address: json['address'] as String,
+      codeOrder: json['codeOrder'] as String,
     );
 
 Map<String, dynamic> _$OrderPackageToJson(OrderPackage instance) =>
@@ -24,5 +25,6 @@ Map<String, dynamic> _$OrderPackageToJson(OrderPackage instance) =>
       'nameOfKid': instance.nameOfKid,
       'phone': instance.phone,
       'email': instance.email,
-      'additionalNotes': instance.additionalNotes,
+      'address': instance.address,
+      'codeOrder': instance.codeOrder,
     };

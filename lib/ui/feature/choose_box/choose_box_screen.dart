@@ -91,9 +91,9 @@ class _ChooseBoxState extends BasePageState<ChooseBoxScreen> {
                     padding: const EdgeInsets.all(24),
                     child: CommonButton(
                         onTap: () async {
-                          await _payment(onSuccessCallBack: () async {
-                            await _addOrder();
-                          });
+                          // await _payment(onSuccessCallBack: () async {
+                          await _addOrder();
+                          // });
                         },
                         title: 'Price : ${widget.package.price ?? ''}'),
                   ),
@@ -183,6 +183,7 @@ extension on _ChooseBoxState {
     await EasyLoading.show(
         maskType: EasyLoadingMaskType.black, dismissOnTap: false);
     await _chooseBox.addOrderPackage(
+      price: widget.package.price ?? 5000,
       kidId: widget.kid.id,
       packageId: widget.package.id,
       nameOfKid: widget.kid.fullName ?? '',

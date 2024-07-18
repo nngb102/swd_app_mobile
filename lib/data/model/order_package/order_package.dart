@@ -11,7 +11,8 @@ class OrderPackage {
     required this.nameOfKid,
     required this.phone,
     required this.email,
-    required this.additionalNotes,
+    required this.address,
+    required this.codeOrder,
   });
 
   factory OrderPackage.fromJson(Map<String, dynamic> json) =>
@@ -36,6 +37,9 @@ class OrderPackage {
   @JsonKey(name: 'email')
   final String email;
 
-  @JsonKey(name: 'additionalNotes')
-  final String additionalNotes;
+  @JsonKey(name: 'address')
+  final String address;
+
+  @JsonKey(name: 'codeOrder')
+  final String codeOrder;
 }

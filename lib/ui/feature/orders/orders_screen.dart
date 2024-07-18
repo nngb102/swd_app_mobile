@@ -143,7 +143,9 @@ class _OrdersScreenState extends BasePageState<OrdersScreen> {
                                       width: 12,
                                     ),
                                     Text(
-                                        '${packageOrders[index].packageId ?? 1}')
+                                      getPackageName(
+                                          packageOrders[index].packageId ?? 1),
+                                    )
                                   ],
                                 ),
                                 const SizedBox(
@@ -199,5 +201,18 @@ extension on _OrdersScreenState {
       EasyLoading.showError(error.message ?? 'Error');
     });
     await EasyLoading.dismiss();
+  }
+
+  String getPackageName(int packageId) {
+    switch (packageId) {
+      case 6:
+        return 'Package 2';
+      case 7:
+        return 'Package 3';
+      case 8:
+        return 'Package 4';
+      default:
+        return 'Package 1';
+    }
   }
 }

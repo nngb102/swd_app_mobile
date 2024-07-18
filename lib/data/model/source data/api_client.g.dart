@@ -241,7 +241,7 @@ class _ApiClient implements ApiClient {
     )
             .compose(
               _dio.options,
-              '/api/v1/add-order-package/5',
+              '/api/v1/add-order-package/${packageId}',
               queryParameters: queryParameters,
               data: _data,
             )
