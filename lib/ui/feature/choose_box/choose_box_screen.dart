@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_zalopay_sdk/flutter_zalopay_sdk.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../data/model/home/package_model.dart';
 import '../../../data/model/package_themes/themes_model.dart';
@@ -90,44 +91,9 @@ class _ChooseBoxState extends BasePageState<ChooseBoxScreen> {
                     padding: const EdgeInsets.all(24),
                     child: CommonButton(
                         onTap: () async {
-                          await EasyLoading.show(
-                              maskType: EasyLoadingMaskType.black,
-                              dismissOnTap: false);
-                          await _chooseBox.addOrderPackage(
-                            kidId: widget.kid.id,
-                            packageId: widget.package.id,
-                            nameOfKid: widget.kid.fullName ?? '',
-                            onSuccessCallBack: () async {
-                              await EasyLoading.dismiss();
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PaySuccessScreen(
-                                      text: 'PaySuccessScreen'),
-                                ),
-                              );
-                            },
-                            onErrorCallBack: (error) async {
-                              await EasyLoading.dismiss();
-                              await showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: const Text('Error'),
-                                    content: Text(error.message ?? ''),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text('OK'),
-                                      )
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                          );
+                          await _payment(onSuccessCallBack: () async {
+                            await _addOrder();
+                          });
                         },
                         title:
                             'Price : ${state.boxSelected?.priceAvarage ?? ''}'),
@@ -149,5 +115,105 @@ extension on _ChooseBoxState {
     });
 
     await EasyLoading.dismiss();
+  }
+
+  Future<void> _payment({required Function() onSuccessCallBack}) async {
+    await EasyLoading.show(
+        maskType: EasyLoadingMaskType.black, dismissOnTap: false);
+    await _chooseBox.payment(
+      onSuccessCallBack: (data) async {
+        await FlutterZaloPaySdk.payOrder(
+                zpToken: data.result.zpTransToken ?? '')
+            .then((event) {
+          // ignore: invalid_use_of_protected_member
+          setState(() {
+            switch (event) {
+              case FlutterZaloPayStatus.cancelled:
+                Fluttertoast.showToast(
+                  msg: 'User Huỷ Thanh Toán',
+                  toastLength: Toast.LENGTH_SHORT,
+                );
+                break;
+              case FlutterZaloPayStatus.success:
+                onSuccessCallBack.call();
+                break;
+              case FlutterZaloPayStatus.failed:
+                Fluttertoast.showToast(
+                  msg: 'Thanh toán thất bại',
+                  toastLength: Toast.LENGTH_SHORT,
+                );
+                break;
+              default:
+                Fluttertoast.showToast(
+                  msg: 'Thanh toán thất bại',
+                  toastLength: Toast.LENGTH_SHORT,
+                );
+
+                break;
+            }
+          });
+        });
+      },
+      onErrorCallBack: (error) async {
+        await EasyLoading.dismiss();
+        await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Error'),
+              content: Text(error.message ?? ''),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                )
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _addOrder() async {
+    await EasyLoading.show(
+        maskType: EasyLoadingMaskType.black, dismissOnTap: false);
+    await _chooseBox.addOrderPackage(
+      kidId: widget.kid.id,
+      packageId: widget.package.id,
+      nameOfKid: widget.kid.fullName ?? '',
+      onSuccessCallBack: () async {
+        await EasyLoading.dismiss();
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                const PaySuccessScreen(text: 'PaySuccessScreen'),
+          ),
+        );
+      },
+      onErrorCallBack: (error) async {
+        await EasyLoading.dismiss();
+        await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Error'),
+              content: Text(error.message ?? ''),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                )
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 }

@@ -28,4 +28,6 @@ class ApiConstants {
   static const createProfile = '/api/v1/create-profile';
 
   static const getPackageOrderByUserId = '/api/v1/get-packageorderbyuserid';
+
+  static const createPayment = '/api/v1/create-payment';
 }

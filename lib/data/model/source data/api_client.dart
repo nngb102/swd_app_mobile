@@ -9,6 +9,8 @@ import '../order_package/order_package.dart';
 import '../order_package/order_package_by_user_response.dart';
 import '../order_package/order_response.dart';
 import '../package_themes/theme_response.dart';
+import '../payment/amount_model.dart';
+import '../payment/payment_response.dart';
 import '../profile/profile_request.dart';
 import '../profile/profile_response.dart';
 import '../profile/theme_id_model.dart';
@@ -85,4 +87,9 @@ abstract class ApiClient {
 
   @GET(ApiConstants.getPackageOrderByUserId)
   Future<OrderPackageByUserResponse> getPackageOrderByUserId();
+
+  @POST(ApiConstants.createPayment)
+  Future<PaymentResponse> createPayment(
+    @Body() AmountModel amount,
+  );
 }
