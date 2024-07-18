@@ -70,12 +70,11 @@ class ChooseBoxPresenter extends Cubit<ChooseBoxState> {
   }
 
   Future<void> payment(
-      {required Function(PaymentResponse data) onSuccessCallBack,
+      {required int price,
+      required Function(PaymentResponse data) onSuccessCallBack,
       Function(CustomException error)? onErrorCallBack}) async {
-    final totalPrice = state.boxSelected?.priceAvarage ?? '500000';
-    await Result.guardFuture(() async =>
-            apiClient.createPayment(AmountModel(amount: int.parse(totalPrice))))
-        .then(
+    await Result.guardFuture(
+        () async => apiClient.createPayment(AmountModel(amount: price))).then(
       (value) => value.when(
         success: (data) {
           onSuccessCallBack.call(data);

@@ -110,25 +110,22 @@ class HomeGetListProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomePresenter, HomeState>(
       bloc: homePresenter,
-      builder: (context, state) => SizedBox(
-        height: 200,
-        child: ListView.builder(
-          itemCount: state.packages.length,
-          itemBuilder: (context, index) => ItemProduct(
-            package: state.packages[index],
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChooseThemeAndKidScreen(
-                    package: state.packages[index],
-                  ),
+      builder: (context, state) => ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: state.packages.length,
+        itemBuilder: (context, index) => ItemProduct(
+          package: state.packages[index],
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChooseThemeAndKidScreen(
+                  package: state.packages[index],
                 ),
-              );
-            },
-          ),
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
+              ),
+            );
+          },
         ),
       ),
     );

@@ -1,25 +1,46 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+// ignore: depend_on_referenced_packages
+import 'package:json_annotation/json_annotation.dart';
 
-part 'profile_request.freezed.dart';
 part 'profile_request.g.dart';
 
-@freezed
-class ProfileRequest with _$ProfileRequest {
-  @JsonSerializable(explicitToJson: true)
-  factory ProfileRequest({
-    @JsonKey(name: 'themeId') int? themeId,
-    @JsonKey(name: 'fullName') String? fullName,
-    @JsonKey(name: 'descriptionHobby') String? descriptionHobby,
-    @JsonKey(name: 'yob') String? yob,
-    @JsonKey(name: 'gender') String? gender,
-    @JsonKey(name: 'color') String? color,
-    @JsonKey(name: 'type') String? type,
-    @JsonKey(name: 'material') String? material,
-    @JsonKey(name: 'typeOrigin') String? typeOrigin,
-  }) = _ProfileRequest;
+@JsonSerializable()
+class ProfileRequest {
+  ProfileRequest({
+    required this.fullName,
+    required this.descriptionHobby,
+    required this.yob,
+    required this.gender,
+    required this.color,
+    required this.type,
+    required this.material,
+    required this.toyOrigin,
+  });
 
   factory ProfileRequest.fromJson(Map<String, dynamic> json) =>
       _$ProfileRequestFromJson(json);
+  Map<String, dynamic> toJson() => _$ProfileRequestToJson(this);
 
-  const ProfileRequest._();
+  @JsonKey(name: 'fullName')
+  final String fullName;
+
+  @JsonKey(name: 'descriptionHobby')
+  final String descriptionHobby;
+
+  @JsonKey(name: 'yob')
+  final String yob;
+
+  @JsonKey(name: 'gender')
+  final String gender;
+
+  @JsonKey(name: 'color')
+  final String color;
+
+  @JsonKey(name: 'type')
+  final String type;
+
+  @JsonKey(name: 'material')
+  final String material;
+
+  @JsonKey(name: 'toyOrigin')
+  final String toyOrigin;
 }

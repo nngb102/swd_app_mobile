@@ -13,10 +13,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:swd_app_mobile/a.dart';
 
 import 'injection/dependencies.dart';
-import 'ui/feature/home/home.dart';
-import 'ui/feature/primary/primary.dart';
 import 'ui/feature/sign_in/sign_in.dart';
-import 'ui/feature/sign_up/sign_up_screen.dart';
 import 'utilities/helpers/app_helper/app_flavor_helper.dart';
 
 void main() {

@@ -210,7 +210,7 @@ class _KidsCreateScreenState extends BasePageState<KidsCreateScreen> {
                       onTap: () {
                         _createKid();
                       },
-                      title: 'Sign Up',
+                      title: 'Create Kid',
                     ),
                     const SizedBox(height: 40),
                   ],

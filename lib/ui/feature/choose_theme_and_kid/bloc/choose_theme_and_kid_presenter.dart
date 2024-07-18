@@ -41,7 +41,7 @@ class ChooseThemeAndKidPresenter extends Cubit<ChooseThemeAndKidState> {
     required Function() onSuccess,
     Function(CustomException error)? onErrorCallBack,
   }) async {
-    await Result.guardFuture(() async => apiClient.getProfiles()).then(
+    await Result.guardFuture(() async => apiClient.getChooseProfile()).then(
       (value) => value.when(
         success: (data) {
           final kidProfileByUserIdModel = data.kidProfiles;

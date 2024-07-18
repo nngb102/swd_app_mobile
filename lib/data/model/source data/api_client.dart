@@ -11,6 +11,7 @@ import '../order_package/order_response.dart';
 import '../package_themes/theme_response.dart';
 import '../payment/amount_model.dart';
 import '../payment/payment_response.dart';
+import '../profile/kid_response.dart';
 import '../profile/profile_request.dart';
 import '../profile/profile_response.dart';
 import '../profile/theme_id_model.dart';
@@ -54,6 +55,9 @@ abstract class ApiClient {
 
   @GET(ApiConstants.getProfiles)
   Future<ProfileResponse> getProfiles();
+
+  @GET(ApiConstants.getChooseProfile)
+  Future<KidResponse> getChooseProfile();
 
   @GET(ApiConstants.getMysteryBox)
   Future<MysteryBoxResponse> getMysteryBox();

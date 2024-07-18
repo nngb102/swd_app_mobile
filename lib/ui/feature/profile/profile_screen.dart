@@ -5,6 +5,7 @@ import '../../base/base_page.dart';
 import '../../bloc/ui_presenter.dart';
 import '../../resources/app_colors.dart';
 import '../kids_profile/kids_profile_screen.dart';
+import '../sign_in/sign_in.dart';
 import 'components/profile_menu.dart';
 
 class ProfileScreen extends BasePage {
@@ -102,6 +103,18 @@ class _ProfileScreenState extends BasePageState<ProfileScreen> {
           ProFileMenu(
             icon: Icons.location_on_outlined,
             txt: user?.address ?? '',
+          ),
+          InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SignIn(),
+              ),
+            ),
+            child: const ProFileMenu(
+              icon: Icons.logout,
+              txt: 'Log Out',
+            ),
           ),
         ],
       ),

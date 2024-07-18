@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/model/auth/result.dart';
 
-import '../../../../data/model/profile/theme_id_model.dart';
+import '../../../../data/model/profile/profile_request.dart';
 import '../../../../data/model/source%20data/api_client.dart';
 import '../../../../injection/injector.dart';
 import '../../../base/custom_exception.dart';
@@ -59,7 +59,7 @@ class KidCreatePresenter extends Cubit<KidCreateState> {
     Function()? onSuccessCallBack,
     Function(CustomException error)? onErrorCallBack,
   }) async {
-    final kid = ThemeIdModel(
+    final kid = ProfileRequest(
       fullName: state.fullName,
       descriptionHobby: state.hobby,
       yob: state.birth,
@@ -68,13 +68,9 @@ class KidCreatePresenter extends Cubit<KidCreateState> {
       type: state.type,
       material: state.material,
       toyOrigin: state.madeIn,
-      themeId: 1,
     );
     await Result.guardFuture(
-      () async => apiClient.updateProfile(
-        uiPresenter.state.user?.id ?? 1,
-        kid,
-      ),
+      () async => apiClient.createProfile(kid),
     ).then(
       (value) => value.when(
         success: (data) {

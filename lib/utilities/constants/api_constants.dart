@@ -19,6 +19,7 @@ class ApiConstants {
 
   // MysteryBox
   static const getMysteryBox = '/api/v1/get-mysterybox';
+    static const getChooseProfile = '/api/v1/get-choose-profiles';
 
   ////addOrderPackage
   static const addOrderPackage = '/api/v1/add-order-package/5';

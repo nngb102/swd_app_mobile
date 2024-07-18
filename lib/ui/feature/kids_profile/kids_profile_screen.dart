@@ -80,7 +80,7 @@ class _KidsProfileScreenState extends BasePageState<KidsProfileScreen> {
             );
             if (message is String) {
               await Fluttertoast.showToast(
-                msg: 'Sign up success',
+                msg: 'Create Kid successfully',
                 toastLength: Toast.LENGTH_SHORT,
               );
               await _getKid();

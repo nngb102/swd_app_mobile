@@ -95,8 +95,7 @@ class _ChooseBoxState extends BasePageState<ChooseBoxScreen> {
                             await _addOrder();
                           });
                         },
-                        title:
-                            'Price : ${state.boxSelected?.priceAvarage ?? ''}'),
+                        title: 'Price : ${widget.package.price ?? ''}'),
                   ),
                 );
               })
@@ -118,10 +117,13 @@ extension on _ChooseBoxState {
   }
 
   Future<void> _payment({required Function() onSuccessCallBack}) async {
+    final price = widget.package.price ?? 5000;
     await EasyLoading.show(
         maskType: EasyLoadingMaskType.black, dismissOnTap: false);
     await _chooseBox.payment(
+      price: price.toInt(),
       onSuccessCallBack: (data) async {
+        await EasyLoading.dismiss();
         await FlutterZaloPaySdk.payOrder(
                 zpToken: data.result.zpTransToken ?? '')
             .then((event) {
